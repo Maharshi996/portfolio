@@ -9,9 +9,9 @@ export const linksSchema = {
       type: 'object',
       fields: [
         {
-          name: 'url',
-          title: 'URL',
-          type: 'url',
+          name: 'path',
+          title: 'Path',
+          type: 'string',
           description: 'The URL of the link',
         },
         {
@@ -28,9 +28,9 @@ export const linksSchema = {
       type: 'object',
       fields: [
         {
-          name: 'url',
-          title: 'URL',
-          type: 'url',
+          name: 'path',
+          title: 'Path',
+          type: 'string',
           description: 'The URL of the link',
         },
         {

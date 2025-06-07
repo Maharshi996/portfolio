@@ -1,5 +1,5 @@
 export const buttonSchema = {
-  name: 'Buttons',
+  name: 'buttons',
   title: 'Buttons',
   type: 'array',
   of: [

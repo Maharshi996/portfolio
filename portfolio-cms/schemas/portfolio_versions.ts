@@ -28,7 +28,7 @@ const portfolioVersions: SchemaTypeDefinition = {
     },
 
     {
-      name: 'compoenents',
+      name: 'components',
       title: 'Components',
       type: 'array',
       of: [...component],
