@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-cursor {
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
+
+.App {
+  cursor: none;
+  /* hides default cursor */
+}

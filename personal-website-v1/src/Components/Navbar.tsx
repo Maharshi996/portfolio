@@ -1,41 +1,29 @@
-import React from 'react'
-import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
+import React, { useEffect, useMemo } from "react";
+import Box from "@mui/material/Box";
+import { usePageContext } from "../Context/pageContext";
+import { Typography } from "@mui/material";
 
-function Navbar() {
+function Navbar(props) {
+  const { data } = props;
+
   return (
-    <Box sx={{
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"space-evenly",
-        background: "linear-gradient(to left, #000000 0%, #000066 100%)",
-        color:"white",
-        height:"5vw"
-    }}>
-        <Typography>
-            About
-        </Typography>
-        <Typography>
-            Skills
-        </Typography>
-        <Typography>
-            Experience
-        </Typography>
-      
-        <Typography>
-            Achievements/Projects
-        </Typography>
-        <Typography>
-            Education
-        </Typography>
-        <Typography>
-            Social
-        </Typography>
-        <Typography>
-            Feedback
-        </Typography>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "end",
+        gap: "5vw",
+        padding: "0 2vw",
+        background: "linear-gradient(to left, #000000 0%)",
+        color: "white",
+        height: "5vw",
+      }}
+    >
+      {data?.links?.map((link, index) => {
+        return <Typography key={index}> {link?.label}</Typography>;
+      })}
     </Box>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
