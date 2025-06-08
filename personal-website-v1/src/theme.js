@@ -40,11 +40,12 @@ const theme = createTheme({
         {
           props: { variant: "contained", color: "primary" },
           style: {
-            background: "rgb(154, 91, 206)",
+            background: "purple",
             color: "white",
-            border: "0px !important",
             "&:hover": {
-              background: "#1565c0",
+              background: "black",
+              border: "1px solid rgb(154, 91, 206)",
+              boxShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
             },
           },
         },
@@ -53,9 +54,10 @@ const theme = createTheme({
           style: {
             color: "#fff",
             background: "black",
-            border: "2px solid rgb(154, 91, 206)",
+            border: "1px solid rgb(154, 91, 206)",
             "&:hover": {
-              background: "#7b1fa2",
+              border: "0px",
+              boxShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
             },
           },
         },
