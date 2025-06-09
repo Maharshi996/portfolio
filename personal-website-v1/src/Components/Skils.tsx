@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import Seperator from "./seperator.tsx";
+import Seperator from "./Seperator.tsx";
 import { urlFor } from "../utils-sanity/imageBuilder.js";
 
 function Skils(props) {
@@ -8,7 +8,6 @@ function Skils(props) {
   return (
     <Box
       sx={{
-        height: "100vw",
         backgroundColor: "black",
         color: "white",
       }}
@@ -24,12 +23,11 @@ function Skils(props) {
         {links?.map((skill: any, index: number) => {
           return (
             <Box
+              key={`${skill}-${index}`}
               sx={{
                 display: "flex",
                 gap: "2vw",
                 alignItems: "center",
-                // borderRight: "2px solid purple",
-                // borderBottom: "2px solid purple",
                 ":hover": {
                   boxShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
                 },

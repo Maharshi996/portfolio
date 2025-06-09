@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { urlFor } from "../utils-sanity/imageBuilder";
-import Seperator from "./seperator.tsx";
+import Seperator from "./Seperator.tsx";
 
 function Canvas(props) {
   const { longDescription, shortDescription, name, buttons, images } =
@@ -131,7 +131,7 @@ function Canvas(props) {
           <Box
             sx={{
               position: "absolute",
-              top: "5vw",
+              top: "0vw",
               left: 0,
               right: 0,
               margin: "0 auto",
@@ -149,6 +149,7 @@ function Canvas(props) {
               width: "30vw",
               position: "relative",
               overflow: "hidden",
+              top: "-2vw",
               borderRight: "1px solid purple",
               borderBottom: "1px solid purple",
               backgroundImage:
@@ -165,8 +166,8 @@ function Canvas(props) {
                 width: "26vw",
                 objectFit: "cover",
                 position: "absolute",
-                top: 10,
-                left: 10,
+                top: "1vw",
+                left: "1vw",
                 zIndex: 3,
               }}
             />
