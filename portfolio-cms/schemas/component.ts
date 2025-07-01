@@ -1,6 +1,7 @@
 import {backgroundSchema} from '../utils/backgroundSchema'
 import {buttonSchema} from '../utils/buttonSchema'
 import {cardSchema} from '../utils/cardSchema'
+import {expschema} from '../utils/expSchema'
 import {imageSchema} from '../utils/imageSchema'
 import {linksSchema} from '../utils/linksSchema'
 import {variantSchema} from '../utils/varriantSchema'
@@ -33,6 +34,7 @@ export const component = [
       linksSchema,
       buttonSchema,
       backgroundSchema,
+      expschema,
     ],
   },
 ]
