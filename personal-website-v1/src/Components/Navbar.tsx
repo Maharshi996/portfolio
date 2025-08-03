@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { usePageContext } from "../Context/pageContext";
 import { Typography } from "@mui/material";
+import { handleClick } from "./helpers/goToComponent.ts";
 
 function Navbar(props) {
   const { data } = props;
@@ -35,7 +36,15 @@ function Navbar(props) {
       }}
     >
       {data?.links?.map((link, index) => {
-        return <Typography key={index}> {link?.label}</Typography>;
+        return (
+          <Typography
+            key={index}
+            data-e2e={link?.path}
+            onClick={(e) => handleClick(e)}
+          >
+            {link?.label}
+          </Typography>
+        );
       })}
     </Box>
   );

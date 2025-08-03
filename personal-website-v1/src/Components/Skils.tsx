@@ -4,13 +4,14 @@ import Seperator from "./Seperator.tsx";
 import { urlFor } from "../utils-sanity/imageBuilder.js";
 
 function Skils(props) {
-  const { links } = props?.data;
+  const { links, id } = props?.data;
   return (
     <Box
       sx={{
         backgroundColor: "black",
         color: "white",
       }}
+      id={id}
     >
       <Box
         sx={{

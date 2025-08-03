@@ -4,10 +4,10 @@ import Card from "./utils/Card.tsx";
 import Seperator from "./Seperator.tsx";
 
 function Projects(props: any) {
-  const { card } = props?.data;
+  const { card, id } = props?.data;
 
   return (
-    <Box sx={{ backgroundColor: "black" }}>
+    <Box sx={{ backgroundColor: "black" }} id={id}>
       <Box
         sx={{
           color: "white ",

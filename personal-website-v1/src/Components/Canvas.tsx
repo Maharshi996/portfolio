@@ -4,17 +4,17 @@ import { urlFor } from "../utils-sanity/imageBuilder";
 import Seperator from "./Seperator.tsx";
 
 function Canvas(props) {
-  const { longDescription, shortDescription, name, buttons, images } =
+  const { longDescription, shortDescription, name, buttons, images, id } =
     props?.data;
 
   return (
-    <Box sx={{ background: "linear-gradient(to left, #000000 0%)" }}>
+    <Box sx={{ background: "linear-gradient(to left, #000000 0%)" }} id={id}>
       <Box
         sx={{
           display: "grid",
           gridTemplateColumns: "60% 40%",
           height: "fit-content",
-          padding: "8vw 8vw",
+
           gap: "3vw",
         }}
       >
@@ -25,6 +25,7 @@ function Canvas(props) {
             alignItems: "left",
             height: "100%",
             gap: "5vw",
+            padding: "8vw 8vw",
           }}
         >
           <Box
@@ -121,8 +122,8 @@ function Canvas(props) {
         <Box
           sx={{
             position: "relative",
-            width: "30vw",
-            height: "37vw",
+            width: "35vw",
+            height: "33vw",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -131,9 +132,9 @@ function Canvas(props) {
           <Box
             sx={{
               position: "absolute",
-              top: "0vw",
+              top: "4vw",
+              right: "5vw",
               left: 0,
-              right: 0,
               margin: "0 auto",
               height: "30vw",
               width: "30vw",
@@ -145,11 +146,12 @@ function Canvas(props) {
           />
           <Box
             sx={{
-              height: "37vw",
+              height: "33vw",
               width: "30vw",
               position: "relative",
               overflow: "hidden",
-              top: "-2vw",
+              top: "2vw",
+              right: "2vw",
               borderRight: "1px solid purple",
               borderBottom: "1px solid purple",
               backgroundImage:
@@ -166,7 +168,7 @@ function Canvas(props) {
                 width: "26vw",
                 objectFit: "cover",
                 position: "absolute",
-                top: "1vw",
+                top: "5vw",
                 left: "1vw",
                 zIndex: 3,
               }}
