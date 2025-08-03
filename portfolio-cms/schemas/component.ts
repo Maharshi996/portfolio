@@ -1,6 +1,7 @@
 import {backgroundSchema} from '../utils/backgroundSchema'
 import {buttonSchema} from '../utils/buttonSchema'
 import {cardSchema} from '../utils/cardSchema'
+import {contactSchema} from '../utils/contactSchema'
 import {expschema} from '../utils/expSchema'
 import {imageSchema} from '../utils/imageSchema'
 import {linksSchema} from '../utils/linksSchema'
@@ -12,6 +13,18 @@ export const component = [
     title: 'Component',
     type: 'object',
     fields: [
+      {
+        name: 'id',
+        title: 'ID',
+        type: 'string',
+        description: 'A unique identifier for the component',
+      },
+      {
+        name: 'hiden',
+        title: 'Hidden',
+        type: 'boolean',
+        description: 'Is this component hidden? Useful for drafts or future updates.',
+      },
       {
         name: 'name',
         title: 'Name',
@@ -35,6 +48,7 @@ export const component = [
       buttonSchema,
       backgroundSchema,
       expschema,
+      contactSchema,
     ],
   },
 ]
