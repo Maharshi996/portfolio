@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { PageContext } from "./Context/pageContext.js"; // Adjust the import path as necessary
+import { PageContext } from "./Context/pageContext.ts"; // Adjust the import path as necessary
 import { fetchSanityData } from "./utils-sanity/fetchComponentsData.js"; // Adjust the import path as necessary
 import { renderComponent } from "./Components/index.jsx";
 import { ThemeProvider } from "@mui/material/styles";
@@ -8,6 +8,8 @@ import theme from "./theme.js"; // Adjust the import path as necessary
 
 function App(props) {
   const [pageData, setPageData] = useState(null);
+  const [renderResume, setRenderResume] = useState({});
+  const [renderModel, setRenderModel] = useState({});
 
   const { components } = pageData || {};
 
@@ -54,7 +56,15 @@ function App(props) {
   return (
     <div className="App">
       <div className="custom-cursor"></div>
-      <PageContext.Provider value={pageData}>
+      <PageContext.Provider
+        value={{
+          ...pageData,
+          renderResume,
+          setRenderResume,
+          renderModel,
+          setRenderModel,
+        }}
+      >
         <ThemeProvider theme={theme}>
           {components?.map((component, index) => {
             return renderComponent({

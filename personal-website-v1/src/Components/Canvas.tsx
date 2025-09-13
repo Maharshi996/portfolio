@@ -1,11 +1,34 @@
-import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import React, { useEffect, useContext } from "react";
+import { Box, Typography, Button, Modal } from "@mui/material";
 import { urlFor } from "../utils-sanity/imageBuilder";
 import Seperator from "./Seperator.tsx";
+import { handleSroll } from "./helpers/goToComponent.ts";
+import { PageContext } from "../Context/pageContext.ts";
+import PdfViewer from "../Components/resume/pdfViewer.tsx";
+import { getFileUrl } from "../utils-sanity/fetchComponentsData.js";
 
-function Canvas(props) {
+const RESUME_BUTTON_URL = "display-resume";
+
+function Canvas(props: any) {
   const { longDescription, shortDescription, name, buttons, images, id } =
     props?.data;
+  const { renderResume, setRenderResume } = useContext(PageContext) || {};
+  const [openResume, setOpenResume] = React.useState(false);
+
+  useEffect(() => {
+    if (!buttons || buttons.length === 0 || !setRenderResume) return;
+
+    const pdfButtons = buttons.filter(
+      (button: any) => button?.url === RESUME_BUTTON_URL && button?.pdfFile
+    );
+
+    if (pdfButtons.length > 0) {
+      const url = getFileUrl(pdfButtons[0]?.pdfFile?.asset);
+      setRenderResume({ fileUrl: url });
+    }
+  }, [buttons, PageContext]);
+
+  const handleClick = () => setOpenResume(true);
 
   return (
     <Box sx={{ background: "linear-gradient(to left, #000000 0%)" }} id={id}>
@@ -102,13 +125,19 @@ function Canvas(props) {
               {name}
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "left", gap: "2vw" }}>
-              {buttons?.map((button, idx) => {
+              {buttons?.map((button: any, idx: number) => {
+                const isResumeButton = button?.url === RESUME_BUTTON_URL;
                 return (
                   <Button
                     key={idx}
                     variant="contained"
                     color={button?.variant}
-                    onClick={button.onClick}
+                    data-e2e={button?.url}
+                    onClick={
+                      isResumeButton
+                        ? () => handleClick()
+                        : (e) => handleSroll(e)
+                    }
                     sx={{ borderRadius: "0px" }}
                   >
                     {button.label}
@@ -118,7 +147,16 @@ function Canvas(props) {
             </Box>
           </Box>
         </Box>
-
+        {renderResume && openResume && (
+          <Modal
+            open={openResume}
+            onClose={() => setOpenResume(false)}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <PdfViewer {...renderResume} />
+          </Modal>
+        )}
         <Box
           sx={{
             position: "relative",

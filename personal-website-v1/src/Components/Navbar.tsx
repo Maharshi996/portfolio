@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import { usePageContext } from "../Context/pageContext";
 import { Typography } from "@mui/material";
-import { handleClick } from "./helpers/goToComponent.ts";
+import { handleSroll } from "./helpers/goToComponent.ts";
 
 function Navbar(props) {
   const { data } = props;
@@ -40,7 +39,7 @@ function Navbar(props) {
           <Typography
             key={index}
             data-e2e={link?.path}
-            onClick={(e) => handleClick(e)}
+            onClick={(e) => handleSroll(e)}
           >
             {link?.label}
           </Typography>
