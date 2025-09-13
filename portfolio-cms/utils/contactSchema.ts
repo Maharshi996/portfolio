@@ -1,3 +1,5 @@
+import {buttonSchema} from './buttonSchema'
+
 export const contactSchema = {
   name: 'contact',
   title: 'Contact',
@@ -6,12 +8,6 @@ export const contactSchema = {
     {
       type: 'object',
       fields: [
-        {
-          name: 'id',
-          title: 'ID',
-          type: 'string',
-          description: 'A unique identifier for the contact component',
-        },
         {
           name: 'hidden',
           title: 'Hidden',
@@ -90,6 +86,7 @@ export const contactSchema = {
                     },
                   ],
                 },
+                buttonSchema,
               ],
             },
           ],

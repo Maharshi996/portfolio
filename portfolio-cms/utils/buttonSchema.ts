@@ -17,7 +17,7 @@ export const buttonSchema = {
         {
           name: 'url',
           title: 'URL',
-          type: 'url',
+          type: 'string',
           description: 'The URL the button links to',
         },
         {
@@ -30,6 +30,13 @@ export const buttonSchema = {
               {title: 'Secondary', value: 'secondary'},
               {title: 'Tertiary', value: 'tertiary'},
             ],
+          },
+        },
+        {
+          name: 'pdfFile',
+          type: 'file',
+          options: {
+            accept: 'application/pdf',
           },
         },
       ],
