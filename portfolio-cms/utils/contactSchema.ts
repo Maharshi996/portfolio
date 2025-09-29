@@ -18,83 +18,77 @@ export const contactSchema = {
           name: 'name',
           title: 'Name',
           type: 'string',
-          description:
-            'The name of the contact component (e.g., "Contact Form", "Support Section")',
+          description: 'Name of the form',
         },
         {
-          name: 'tabs',
-          title: 'Tabs',
+          name: 'props',
+          title: 'Form Properties',
+          type: 'array',
+          of:[{
+            title : ''
+          }]
+        },
+        {
+          name: 'emailTo',
+          title: 'Send Emails To',
+          type: 'email',
+          description: 'Email address to send form submissions to',
+        },
+        {
+          name: 'inputFields',
+          title: 'Input Fields',
           type: 'array',
           of: [
             {
+              name: 'inputField',
+              title: 'Input Field',
               type: 'object',
               fields: [
                 {
-                  name: 'tabName',
-                  title: 'Tab Name',
+                  name: 'label',
+                  title: 'Label',
                   type: 'string',
-                  description: 'Name of the contact tab (e.g., "Contact Us", "Support")',
+                  description: 'Label for the input field (e.g., "Name", "Email")',
                 },
                 {
-                  name: 'inputFields',
-                  title: 'Input Fields',
-                  type: 'array',
-                  of: [
-                    {
-                      name: 'inputField',
-                      title: 'Input Field',
-                      type: 'object',
-                      fields: [
-                        {
-                          name: 'label',
-                          title: 'Label',
-                          type: 'string',
-                          description: 'Label for the input field (e.g., "Name", "Email")',
-                        },
-                        {
-                          name: 'type',
-                          title: 'Type',
-                          type: 'string',
-                          options: {
-                            list: [
-                              {title: 'Text', value: 'text'},
-                              {title: 'Email', value: 'email'},
-                              {title: 'Phone', value: 'phone'},
-                              {title: 'Textarea', value: 'textarea'},
-                            ],
-                          },
-                        },
-                        {
-                          name: 'required',
-                          title: 'Required',
-                          type: 'boolean',
-                          description: 'Is this field required?',
-                        },
-                        {
-                          name: 'placeholder',
-                          title: 'Placeholder',
-                          type: 'string',
-                          description: 'Placeholder text for the input field',
-                        },
-                        {
-                          name: 'errorMessage',
-                          title: 'Error Message',
-                          type: 'string',
-                          description: 'Error message to display if validation fails',
-                        },
-                      ],
-                    },
-                  ],
+                  name: 'type',
+                  title: 'Type',
+                  type: 'string',
+                  options: {
+                    list: [
+                      {title: 'Text', value: 'text'},
+                      {title: 'Email', value: 'email'},
+                      {title: 'Phone', value: 'phone'},
+                      {title: 'Textarea', value: 'textarea'},
+                      {title: 'Select', value: 'select'},
+                      {title: 'Checkbox', value: 'checkbox'},
+                      {title: 'Radio', value: 'radio'},
+                    ],
+                  },
                 },
-                buttonSchema,
+                {
+                  name: 'required',
+                  title: 'Required',
+                  type: 'boolean',
+                  description: 'Is this field required?',
+                },
+                {
+                  name: 'placeholder',
+                  title: 'Placeholder',
+                  type: 'string',
+                  description: 'Placeholder text for the input field',
+                },
+                {
+                  name: 'errorMessage',
+                  title: 'Error Message',
+                  type: 'string',
+                  description: 'Error message to display if validation fails',
+                },
               ],
             },
           ],
-          options: {
-            collapsible: true,
-            collapsed: false,
-          },
         },
+        buttonSchema,
       ],
     },
   ],
