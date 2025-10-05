@@ -21,14 +21,6 @@ export const contactSchema = {
           description: 'Name of the form',
         },
         {
-          name: 'props',
-          title: 'Form Properties',
-          type: 'array',
-          of:[{
-            title : ''
-          }]
-        },
-        {
           name: 'emailTo',
           title: 'Send Emails To',
           type: 'email',
@@ -43,12 +35,19 @@ export const contactSchema = {
               name: 'inputField',
               title: 'Input Field',
               type: 'object',
+
               fields: [
                 {
                   name: 'label',
                   title: 'Label',
                   type: 'string',
                   description: 'Label for the input field (e.g., "Name", "Email")',
+                },
+                {
+                  name: 'name',
+                  title: 'Name',
+                  type: 'string',
+                  description: 'Field name for form submisssion',
                 },
                 {
                   name: 'type',
