@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import Seperator from "./Seperator.tsx";
 import { urlFor } from "../utils-sanity/imageBuilder.js";
 
-function Skils(props) {
+function Skils(props: any) {
   const { links, id } = props?.data;
   return (
     <Box
@@ -18,7 +18,7 @@ function Skils(props) {
           display: "grid",
           gridTemplateColumns: "repeat(4,1fr)",
           padding: "5vw 15vw",
-          gap: "5vw",
+          gap: "4vw",
         }}
       >
         {links?.map((skill: any, index: number) => {

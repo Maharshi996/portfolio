@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Box, Button, Input, TextField } from "@mui/material";
+import { Box, Button, Input, InputBase, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { getValidationRules, getErrorMessage } from "./utils";
+import { sendEmail } from "./utils";
 
 function ContactForm({ data }: any) {
   const { buttons, inputFields } = data?.contact?.[0] || {};
+
   const {
     register,
     handleSubmit,
@@ -13,9 +15,17 @@ function ContactForm({ data }: any) {
   } = useForm({ mode: "onBlur" });
   const [submittedData, setSubmittedData] = useState<any>(null);
 
-  const onSubmit = (formData: any) => {
+  const [emailStatus, setEmailStatus] = useState<string | null>(null);
+
+  const onSubmit = async (formData: any) => {
     setSubmittedData(formData);
-    reset();
+    try {
+      await sendEmail(formData);
+      setEmailStatus("Email sent successfully!");
+      reset();
+    } catch (error) {
+      setEmailStatus("Failed to send email. Please try again.");
+    }
   };
 
   return (
@@ -23,12 +33,25 @@ function ContactForm({ data }: any) {
       sx={{
         backgroundColor: "black",
       }}
+      id={data?.id}
     >
+      {emailStatus && (
+        <Box
+          sx={{
+            color: emailStatus.includes("success") ? "#4caf50" : "#ff1744",
+            padding: 2,
+            textAlign: "center",
+          }}
+        >
+          {emailStatus}
+        </Box>
+      )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: "1fr",
+            padding: "4vw 8vw",
             width: "60vw",
             margin: "0 auto",
             gap: "1vw",
@@ -52,7 +75,7 @@ function ContactForm({ data }: any) {
                   const errorMsg = getErrorMessage(errorObj);
                   return (
                     <Box key={field?._key} sx={{ width: "100%" }}>
-                      <Input
+                      <InputBase
                         placeholder={field?.placeholder || ""}
                         type={field?.type || "text"}
                         sx={{
@@ -62,6 +85,9 @@ function ContactForm({ data }: any) {
                           color: "white",
                           "&.Mui-focused": {
                             border: "1px solid violet",
+                          },
+                          "&:after": {
+                            borderBottom: "none",
                           },
                         }}
                         {...register(
@@ -90,9 +116,20 @@ function ContactForm({ data }: any) {
                 multiline
                 rows={4}
                 sx={{
-                  border: "1px solid #ccc",
                   color: "black",
                   width: "100%",
+
+                  "&.Mui-focused": {
+                    border: "none",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    border: "1px solid #ccc",
+                    borderRadius: 0,
+                    padding: 1,
+                  },
+                  fieldset: {
+                    border: "none",
+                  },
                 }}
                 {...register(
                   inputFields[inputFields.length - 1]?.name || "message"
@@ -100,23 +137,18 @@ function ContactForm({ data }: any) {
               />
             </Box>
           )}
-        </Box>
-        <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={{ margin: 1, paddingX: 8, letterSpacing: 1.5 }}
-          >
-            {buttons?.[0]?.label || "Submit"}
-          </Button>
+          <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ margin: 1, paddingX: 8, letterSpacing: 1.5 }}
+            >
+              {buttons?.[0]?.label || "Submit"}
+            </Button>
+          </Box>
         </Box>
       </form>
-      {submittedData && (
-        <Box sx={{ color: "white", mt: 2, textAlign: "center" }}>
-          <pre>{JSON.stringify(submittedData, null, 2)}</pre>
-        </Box>
-      )}
     </Box>
   );
 }
