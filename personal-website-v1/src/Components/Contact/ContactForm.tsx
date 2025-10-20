@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { getValidationRules, getErrorMessage } from "./utils";
 import { sendEmail } from "./utils";
 import { useDeviceType } from "../../utils/compatible.ts";
+import Seperator from "../Seperator.tsx";
 
 function ContactForm({ data }: any) {
   const { buttons, inputFields } = data?.contact?.[0] || {};
@@ -185,6 +186,7 @@ function ContactForm({ data }: any) {
           </Box>
         </Box>
       </form>
+      <Seperator />
     </Box>
   );
 }
