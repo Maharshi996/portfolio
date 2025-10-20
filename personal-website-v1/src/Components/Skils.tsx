@@ -83,7 +83,7 @@ function Skils(props: any) {
           sx={{
             textShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
             fontSize: isDesktop ? "1vw" : "3vw",
-            margin: isDesktop ? "1vw auto 2vw auto" : "5vw auto",
+            margin: isDesktop ? "2vw auto" : "5vw auto",
           }}
         >
           {canShowMore ? " SHOW MORE" : "SHOW LESS"}

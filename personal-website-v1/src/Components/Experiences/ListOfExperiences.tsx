@@ -24,10 +24,13 @@ function ListOfExperiences(props) {
               alignItems: "flex-start",
               padding: "1vw",
               marginBottom: "1.5vw",
-              border:
+
+              borderRadius: "0.5vw",
+              boxShadow:
                 selectedIndex === index
-                  ? "1px solid rgba(230, 149, 235, 0.1)"
+                  ? "0px 0px 5px rgba(230, 149, 235, 0.8)"
                   : "unset",
+              backdropFilter: selectedIndex === index ? "blur(10px)" : "unset",
             }}
           >
             <Typography>{item?.role}</Typography>

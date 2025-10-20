@@ -78,7 +78,6 @@ function Experience(item) {
           display: "flex",
           flexDirection: "column",
           textAlign: "start",
-          // boxShadow: "0px 0px 5px rgba(230, 149, 235, 0.8)",
           padding: "2vw",
           color: "white",
           maxHeight: "28vw",
