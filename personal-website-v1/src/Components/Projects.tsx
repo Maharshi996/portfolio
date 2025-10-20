@@ -2,17 +2,23 @@ import React from "react";
 import { Box } from "@mui/material";
 import Card from "./utils/Card.tsx";
 import Seperator from "./Seperator.tsx";
+import { useDeviceType } from "../utils/compatible.ts";
 
 function Projects(props: any) {
   const { card, id } = props?.data;
+  const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const visibleCount = isMobile ? 1 : isTablet ? 2 : 3.5;
+  const gap = "1vw";
+  const itemWidth = `calc((100% - (${
+    visibleCount - 1
+  } * ${gap})) / ${visibleCount})`;
 
   return (
     <Box id={id}>
       <Box
         sx={{
           color: "white ",
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
+          display: "block",
           gap: "1vw",
           padding: "5vw 15vw",
         }}
@@ -23,16 +29,19 @@ function Projects(props: any) {
             position: "relative",
             display: "flex",
             alignItems: "center",
-            width: "69vw",
+            width: isMobile || isTablet ? "99%" : "69vw",
           }}
         >
           {/* Left Arrow */}
           <Box
             component="button"
             onClick={() => {
-              const carousel = document.getElementById("carousel-container");
+              const carousel = document.getElementById(
+                "carousel-container"
+              ) as HTMLDivElement | null;
               if (carousel) {
-                carousel.scrollBy({ left: -300, behavior: "smooth" });
+                const cardWidth = carousel.clientWidth / visibleCount;
+                carousel.scrollBy({ left: -cardWidth, behavior: "smooth" });
               }
             }}
             sx={{
@@ -65,7 +74,7 @@ function Projects(props: any) {
               display: "flex",
               overflowX: "auto",
               scrollSnapType: "x mandatory",
-              gap: "1vw",
+              gap: isMobile || isTablet ? "4vw" : "1vw",
               paddingBottom: "1vw",
               width: "100%",
               scrollBehavior: "smooth",
@@ -79,7 +88,7 @@ function Projects(props: any) {
               <Box
                 key={idx}
                 sx={{
-                  flex: "0 0 auto",
+                  flex: `0 0 ${itemWidth}`,
                   scrollSnapAlign: "start",
                 }}
               >
@@ -91,9 +100,12 @@ function Projects(props: any) {
           <Box
             component="button"
             onClick={() => {
-              const carousel = document.getElementById("carousel-container");
+              const carousel = document.getElementById(
+                "carousel-container"
+              ) as HTMLDivElement | null;
               if (carousel) {
-                carousel.scrollBy({ left: 300, behavior: "smooth" });
+                const cardWidth = carousel.clientWidth / visibleCount;
+                carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
               }
             }}
             sx={{

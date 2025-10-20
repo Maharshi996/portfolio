@@ -203,7 +203,7 @@ function Canvas(props: any) {
           />
         </Box>
       </Box>
-      {/* <Seperator /> */}
+      <Seperator />
     </Box>
   );
 }
