@@ -56,7 +56,6 @@ function ContactForm({ data }: any) {
             borderRadius: "0.3vw",
             boxShadow: "0px 0px 20px rgb(74, 69, 74)",
             backdropFilter: "blur(10px)",
-            marginY: isMobile ? "10vw" : "4vw",
           }}
         >
           <Box
@@ -186,7 +185,6 @@ function ContactForm({ data }: any) {
           </Box>
         </Box>
       </form>
-      <Seperator />
     </Box>
   );
 }
