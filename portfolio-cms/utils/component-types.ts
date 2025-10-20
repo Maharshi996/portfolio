@@ -9,4 +9,6 @@ export const componentTypes = [
   {title: 'Testimonials', value: 'testimonials'},
   {title: 'Contact', value: 'contact'},
   {title: 'Interest', value: 'interest'},
+  {title: 'certifications', value: 'certifications'},
+  {title: 'socialMedia', value: 'socialMedia'},
 ]
