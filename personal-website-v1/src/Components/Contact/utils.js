@@ -5,34 +5,37 @@ const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 // Utility functions for ContactForm validations
 
-export function getValidationRules(index) {
-  if (index === 0 || index === 1) {
-    // Name validations
+export function getValidationRules(field, index) {
+  const isRequired = !!(field && field.required);
+  const cmsMessage = field && field.errorMessage ? field.errorMessage : undefined;
+
+  const base = {
+    required: isRequired ? cmsMessage || "This field is required" : false,
+  };
+
+  const type = field && field.type ? String(field.type).toLowerCase() : undefined;
+
+  if (type === "email") {
     return {
-      required: "Name is required",
-      minLength: { value: 2, message: "Name must be at least 2 characters" },
-      maxLength: { value: 30, message: "Name must be at most 30 characters" },
-    };
-  } else if (index === 2) {
-    // Email validations
-    return {
-      required: "Email is required",
+      ...base,
       pattern: {
         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: "Invalid email address",
-      },
-    };
-  } else if (index === 3) {
-    // Mobile number validations
-    return {
-      required: "Mobile number is required",
-      pattern: {
-        value: /^\d{10}$/,
-        message: "Mobile number must be 10 digits",
+        message: cmsMessage || "Invalid email address",
       },
     };
   }
-  return {};
+
+  if (type === "phone" || type === "tel" || type === "mobile") {
+    return {
+      ...base,
+      pattern: {
+        value: /^\d{10}$/,
+        message: cmsMessage || "Mobile number must be 10 digits",
+      },
+    };
+  }
+
+  return base;
 }
 
 export function getErrorMessage(errorObj) {
