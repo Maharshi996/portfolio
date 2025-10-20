@@ -7,7 +7,7 @@ function Projects(props: any) {
   const { card, id } = props?.data;
 
   return (
-    <Box sx={{ backgroundColor: "black" }} id={id}>
+    <Box id={id}>
       <Box
         sx={{
           color: "white ",

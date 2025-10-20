@@ -21,7 +21,7 @@ const theme = createTheme({
       main: "#2196f3",
     },
     background: {
-      default: "#212121",
+      default: "#0d0d0d",
       paper: "#f5f5f5",
     },
     text: {
@@ -30,6 +30,23 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          background:
+            "linear-gradient(transparent 95%, rgba(255,255,255,0.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.05) 95%)",
+          backgroundColor: "#0d0d0d",
+          backgroundSize: "0.8vw 0.8vw",
+          color: "white",
+          margin: 0,
+          padding: 0,
+          fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+          "& *": {
+            boxSizing: "border-box",
+          },
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {

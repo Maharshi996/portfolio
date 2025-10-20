@@ -29,12 +29,7 @@ function ContactForm({ data }: any) {
   };
 
   return (
-    <Box
-      sx={{
-        backgroundColor: "black",
-      }}
-      id={data?.id}
-    >
+    <Box id={data?.id}>
       {emailStatus && (
         <Box
           sx={{

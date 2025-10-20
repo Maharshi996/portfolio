@@ -33,8 +33,9 @@ function Navbar(props: any) {
         backdropFilter: "blur(10px)",
         borderBottom: transparent ? "1px solid purple" : "0px",
         background: transparent
-          ? "rgba(255, 255, 255, 0.1) " // Fully transparent black
-          : "linear-gradient(to left, #000000 0%)",
+          ? "rgba(255, 255, 255, 0.1) "
+          : "linear-gradient(transparent 95%, rgba(255,255,255,0.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.05) 95%)",
+        backgroundSize: "0.8vw 0.8vw",
         color: "white",
         height: isMobile ? "18vw" : isTablet ? "10vw" : "5vw",
         zIndex: 1000,

@@ -53,7 +53,12 @@ function Experience(item) {
             >
               {item?.companyName}
             </Typography>
-            <Box sx={{ display: "flex", gap: "1vw" }}>
+            <Box
+              sx={{
+                display: "flex",
+                gap: "1vw",
+              }}
+            >
               <Typography>{` From ${item?.startDate} - `}</Typography>
               {item?.present ? (
                 <Typography>Present</Typography>
@@ -76,7 +81,9 @@ function Experience(item) {
           // boxShadow: "0px 0px 5px rgba(230, 149, 235, 0.8)",
           padding: "2vw",
           color: "white",
-          maxHeight: "20vw",
+          maxHeight: "28vw",
+          backdropFilter: "blur(0.08vw)",
+
           overflowY: "auto",
           "&::-webkit-scrollbar-thumb": {
             backgroundColor: "violet",

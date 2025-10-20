@@ -6,7 +6,7 @@ function Experiences(props: any) {
   const { experience, id } = props?.data;
 
   return (
-    <Box sx={{ backgroundColor: "black" }}>
+    <Box>
       <Box
         sx={{
           padding: "4vw 8vw",

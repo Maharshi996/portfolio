@@ -31,7 +31,7 @@ function Canvas(props: any) {
   const handleClick = () => setOpenResume(true);
 
   return (
-    <Box sx={{ background: "linear-gradient(to left, #000000 0%)" }} id={id}>
+    <Box id={id}>
       <Box
         sx={{
           display: "grid",
@@ -73,6 +73,7 @@ function Canvas(props: any) {
                 sx={{
                   color: "#FFFFFF",
                   fontWeight: "bold",
+                  fontFamily: " IBM Plex Mono, monospace",
                 }}
               >
                 {longDescription}
@@ -168,50 +169,22 @@ function Canvas(props: any) {
           }}
         >
           <Box
+            component="img"
+            src={urlFor(images?.[0]?.asset?._ref).url()}
+            alt="Maharshi-photo"
             sx={{
-              position: "absolute",
-              top: "4vw",
-              right: "5vw",
-              left: 0,
-              margin: "0 auto",
               height: "30vw",
               width: "30vw",
+              objectFit: "cover",
+              position: "absolute",
+              border: "1px solid purple",
+              backdropFilter: "blur(10px)",
               borderRadius: "50%",
-              border: "1vw solid violet",
-              boxShadow: "0px 0px 30px rgba(255, 255, 255, 0.8)",
-              zIndex: 1,
+              boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.5)",
+              top: "5vw",
+              left: "1vw",
             }}
           />
-          <Box
-            sx={{
-              height: "33vw",
-              width: "30vw",
-              position: "relative",
-              overflow: "hidden",
-              top: "2vw",
-              right: "2vw",
-              borderRight: "1px solid purple",
-              borderBottom: "1px solid purple",
-              backgroundImage:
-                "linear-gradient(to right, rgba(215, 202, 202, 0), rgb(0, 0, 0))",
-              zIndex: 2,
-            }}
-          >
-            <Box
-              component="img"
-              src={urlFor(images?.[0]?.asset?._ref).url()}
-              alt="Maharshi-photo"
-              sx={{
-                height: "33vw",
-                width: "26vw",
-                objectFit: "cover",
-                position: "absolute",
-                top: "5vw",
-                left: "1vw",
-                zIndex: 3,
-              }}
-            />
-          </Box>
         </Box>
       </Box>
       <Seperator />

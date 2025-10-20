@@ -8,7 +8,6 @@ function Skils(props: any) {
   return (
     <Box
       sx={{
-        backgroundColor: "black",
         color: "white",
       }}
       id={id}

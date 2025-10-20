@@ -4,6 +4,7 @@ import { PageContext } from "./Context/pageContext.ts"; // Adjust the import pat
 import { fetchSanityData } from "./utils-sanity/fetchComponentsData.js"; // Adjust the import path as necessary
 import { renderComponent } from "./Components/index.jsx";
 import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
 import theme from "./theme.js"; // Adjust the import path as necessary
 
 function App(props) {
@@ -66,6 +67,7 @@ function App(props) {
         }}
       >
         <ThemeProvider theme={theme}>
+          <CssBaseline />
           {components?.map((component, index) => {
             return renderComponent({
               type: component.variant,

@@ -11,6 +11,7 @@ function Card(props) {
       sx={{
         color: "white",
         border: "1px solid purple",
+        backdropFilter: "blur(10px)",
         width: "20vw",
         padding: "1vw",
         ":hover": {
