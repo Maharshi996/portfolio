@@ -6,6 +6,7 @@ import { handleSroll } from "./helpers/goToComponent.ts";
 import { PageContext } from "../Context/pageContext.ts";
 import PdfViewer from "../Components/resume/pdfViewer.tsx";
 import { getFileUrl } from "../utils-sanity/fetchComponentsData.js";
+import { useDeviceType } from "../utils/compatible.ts";
 
 const RESUME_BUTTON_URL = "display-resume";
 
@@ -14,6 +15,7 @@ function Canvas(props: any) {
     props?.data;
   const { renderResume, setRenderResume } = useContext(PageContext) || {};
   const [openResume, setOpenResume] = React.useState(false);
+  const { isMobile, isTablet, isDesktop } = useDeviceType();
 
   useEffect(() => {
     if (!buttons || buttons.length === 0 || !setRenderResume) return;
@@ -34,11 +36,12 @@ function Canvas(props: any) {
     <Box id={id}>
       <Box
         sx={{
-          display: "grid",
+          display: isMobile || isTablet ? "flex" : "grid",
+          flexDirection: isMobile || isTablet ? "column-reverse" : "unset",
+          alignItems: isMobile || isTablet ? "center" : "unset",
           gridTemplateColumns: "60% 40%",
           height: "fit-content",
-
-          gap: "3vw",
+          gap: isMobile || isTablet ? "10vw" : "3vw",
         }}
       >
         <Box
@@ -48,7 +51,7 @@ function Canvas(props: any) {
             alignItems: "left",
             height: "100%",
             gap: "5vw",
-            padding: "8vw 8vw",
+            padding: "5vw 8vw",
           }}
         >
           <Box
@@ -62,21 +65,21 @@ function Canvas(props: any) {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "left",
+                justifyContent: isMobile || isTablet ? "center" : "left",
                 height: "fit-content",
                 alignItems: "baseline",
                 gap: "1vw",
               }}
             >
               <Typography
-                variant="h3"
                 sx={{
                   color: "#FFFFFF",
                   fontWeight: "bold",
                   fontFamily: " IBM Plex Mono, monospace",
+                  fontSize: isMobile || isTablet ? "7vw" : "4vw",
                 }}
               >
-                {longDescription}
+                {shortDescription}
               </Typography>
               <Box
                 sx={{
@@ -92,40 +95,49 @@ function Canvas(props: any) {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "left",
+                justifyContent: isMobile || isTablet ? "center" : "left",
                 gap: "4vw",
               }}
             >
-              <Box
-                sx={{
-                  width: "15vw",
-                  height: "0.3vw",
-                  backgroundColor: "violet",
-                }}
-              />
+              {isDesktop && (
+                <Box
+                  sx={{
+                    width: "15vw",
+                    height: "0.3vw",
+                    backgroundColor: "violet",
+                  }}
+                />
+              )}
               <Typography
-                variant="h4"
                 sx={{
                   color: "#FFFFFF",
                   fontWeight: "bold",
                   textAlign: "center",
                   letterSpacing: "0.3vw",
+                  fontSize: isMobile || isTablet ? "8vw" : "3vw",
                 }}
               >
-                {shortDescription}
+                {name}
               </Typography>
             </Box>
             <Typography
               sx={{
                 color: "#FFFFFF",
-                fontWeight: "bold",
-                textAlign: "left",
-                fontSize: "4vw",
+                textAlign: isMobile || isTablet ? "center" : "left",
+                fontSize: isMobile || isTablet ? "4vw" : "1.3vw",
+                fontFamily: "IBM Plex Mono, monospace",
               }}
             >
-              {name}
+              {longDescription}
             </Typography>
-            <Box sx={{ display: "flex", justifyContent: "left", gap: "2vw" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: isMobile || isTablet ? "center" : "left",
+                gap: isMobile || isTablet ? "5vw" : "2vw",
+                marginTop: isMobile || isTablet ? "5vw" : "unset",
+              }}
+            >
               {buttons?.map((button: any, idx: number) => {
                 const isResumeButton = button?.url === RESUME_BUTTON_URL;
                 return (
@@ -139,7 +151,10 @@ function Canvas(props: any) {
                         ? () => handleClick()
                         : (e) => handleSroll(e)
                     }
-                    sx={{ borderRadius: "0px" }}
+                    sx={{
+                      borderRadius: "0px",
+                      fontSize: isMobile || isTablet ? "3vw" : "unset",
+                    }}
                   >
                     {button.label}
                   </Button>
@@ -161,11 +176,12 @@ function Canvas(props: any) {
         <Box
           sx={{
             position: "relative",
-            width: "35vw",
-            height: "33vw",
+            width: isMobile || isTablet ? "50vw" : "35vw",
+            height: isMobile || isTablet ? "50vw" : "33vw",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: isMobile || isTablet ? "center" : "unset",
+            justifyContent: isMobile || isTablet ? "center" : "unset",
+            marginTop: isMobile || isTablet ? "15vw" : "unset",
           }}
         >
           <Box
@@ -173,21 +189,21 @@ function Canvas(props: any) {
             src={urlFor(images?.[0]?.asset?._ref).url()}
             alt="Maharshi-photo"
             sx={{
-              height: "30vw",
-              width: "30vw",
-              objectFit: "cover",
-              position: "absolute",
+              height: isMobile || isTablet ? "50vw" : "30vw",
+              width: isMobile || isTablet ? "50vw" : "30vw",
+              objectFit: isMobile || isTablet ? "cover" : "contain",
+              position: isMobile || isTablet ? "unset" : "absolute",
               border: "1px solid purple",
               backdropFilter: "blur(10px)",
               borderRadius: "50%",
               boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.5)",
-              top: "5vw",
-              left: "1vw",
+              top: isMobile || isTablet ? "5vw" : "5vw",
+              left: isMobile || isTablet ? "5vw" : "1vw",
             }}
           />
         </Box>
       </Box>
-      <Seperator />
+      {/* <Seperator /> */}
     </Box>
   );
 }

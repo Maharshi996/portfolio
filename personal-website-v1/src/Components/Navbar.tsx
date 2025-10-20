@@ -20,6 +20,30 @@ function Navbar(props: any) {
   const handleDrawerOpen = () => setDrawerOpen(true);
   const handleDrawerClose = () => setDrawerOpen(false);
 
+  const renderNavLink = (
+    link: any,
+    index: any,
+    additionalOnClick?: () => void
+  ) => (
+    <Typography
+      key={index}
+      data-e2e={link?.path}
+      onClick={(e) => {
+        handleSroll(e);
+        if (additionalOnClick) additionalOnClick();
+      }}
+      sx={{
+        my: 2,
+        cursor: "pointer",
+        ":hover": {
+          textShadow: "0px 0px 10px rgba(230, 149, 235, 1)",
+        },
+      }}
+    >
+      {link?.label}
+    </Typography>
+  );
+
   return (
     <Box
       sx={{
@@ -65,32 +89,14 @@ function Navbar(props: any) {
                 gap: 2,
               }}
             >
-              {data?.links?.map((link: any, index: any) => (
-                <Typography
-                  key={index}
-                  data-e2e={link?.path}
-                  onClick={(e) => {
-                    handleSroll(e);
-                    handleDrawerClose();
-                  }}
-                  sx={{ my: 2, cursor: "pointer" }}
-                >
-                  {link?.label}
-                </Typography>
-              ))}
+              {data?.links?.map((link: any, index: any) =>
+                renderNavLink(link, index, handleDrawerClose)
+              )}
             </Box>
           </Drawer>
         </>
       ) : (
-        data?.links?.map((link: any, index: any) => (
-          <Typography
-            key={index}
-            data-e2e={link?.path}
-            onClick={(e) => handleSroll(e)}
-          >
-            {link?.label}
-          </Typography>
-        ))
+        data?.links?.map((link: any, index: any) => renderNavLink(link, index))
       )}
     </Box>
   );
