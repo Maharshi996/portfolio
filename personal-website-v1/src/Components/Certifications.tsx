@@ -6,7 +6,6 @@ import { useDeviceType } from "../utils/compatible.ts";
 
 const Certifications = (props: any) => {
   const { images } = props?.data;
-  console.log("certifications", images);
   const slides: { url: string; alt: string }[] = useMemo(() => {
     if (!images || !Array.isArray(images)) return [];
     return images

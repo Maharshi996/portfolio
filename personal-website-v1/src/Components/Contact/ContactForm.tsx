@@ -51,7 +51,7 @@ function ContactForm({ data }: any) {
             gridTemplateColumns: "1fr",
             padding: "4vw 4vw 3vw 4vw",
             width: isMobile ? "90vw" : isTablet ? "70vw" : "60vw",
-            margin: isMobile ? "10vw auto" : isTablet ? "3vw auto" : "0 auto",
+            margin: isMobile ? "10vw auto" : isTablet ? "3vw auto" : "4vw auto",
             gap: isMobile ? "3vw" : "1vw",
             borderRadius: "0.3vw",
             boxShadow: "0px 0px 20px rgb(74, 69, 74)",

@@ -24,7 +24,8 @@ function SocialLinks(props: any) {
         padding: isMobile ? " 10vw" : "3vw",
         display: "flex",
         justifyContent: "center",
-        backdropFilter: "blur(10px)",
+        backgroundImage:
+          "linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9))",
       }}
     >
       <Box sx={{ display: "flex", gap: 12, alignItems: "center" }}>
