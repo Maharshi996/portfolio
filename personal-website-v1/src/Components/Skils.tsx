@@ -35,7 +35,7 @@ function Skils(props: any) {
             : isTablet
             ? "repeat(3,1fr)"
             : "repeat(4,1fr)",
-          padding: isMobile || isTablet ? "5vw 10vw" : "4vw 15vw",
+          padding: isMobile || isTablet ? "8vw" : "4vw 15vw",
           gap: isMobile || isTablet ? "8vw" : "4vw",
         }}
       >

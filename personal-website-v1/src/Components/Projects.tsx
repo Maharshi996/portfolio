@@ -20,7 +20,7 @@ function Projects(props: any) {
           color: "white ",
           display: "block",
           gap: "1vw",
-          padding: "4vw 15vw",
+          padding: isMobile ? "8vw 15vw" : "4vw 15vw",
         }}
       >
         {/* Carousel with Arrow Buttons */}

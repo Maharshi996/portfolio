@@ -21,7 +21,7 @@ function SocialLinks(props: any) {
   return (
     <Box
       sx={{
-        padding: isMobile ? " 10vw" : "4vw",
+        padding: isMobile ? " 8vw" : "4vw",
         display: "flex",
         justifyContent: "center",
         backgroundImage:
