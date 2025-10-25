@@ -38,7 +38,7 @@ const Certifications = (props: any) => {
     ("ontouchstart" in window || (navigator as any)?.maxTouchPoints > 0);
   const isPaused = hover || pausedUntil > Date.now();
 
-  const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const { isMobile, isTablet } = useDeviceType();
   const slideHeight = isMobile ? 220 : isTablet ? 320 : 480;
   const dotSize = isMobile ? 6 : 8;
   const dotGap = isMobile ? 6 : 8;

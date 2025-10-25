@@ -6,7 +6,7 @@ import { useDeviceType } from "../utils/compatible.ts";
 
 function Projects(props: any) {
   const { card, id } = props?.data;
-  const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const { isMobile, isTablet } = useDeviceType();
   const visibleCount = isMobile ? 1 : isTablet ? 2 : 3.5;
   const gap = "1vw";
   const itemWidth = `calc((100% - (${

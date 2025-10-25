@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
 import { useDeviceType } from "../../utils/compatible.ts";
 import Connector from "./Connector.tsx";
@@ -6,7 +6,7 @@ import ExperienceCard from "./ExperienceCard.tsx";
 
 function ListOfExperiences(props) {
   const { experiences, onSelectExperience } = props;
-  const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const { isMobile } = useDeviceType();
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
 
   React.useEffect(() => {
@@ -14,7 +14,7 @@ function ListOfExperiences(props) {
       onSelectExperience(experiences[0]?.richDescription);
       setSelectedIndex(0);
     }
-  }, [experiences]);
+  }, [experiences, onSelectExperience]);
 
   return (
     <Box

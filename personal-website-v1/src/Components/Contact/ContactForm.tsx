@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Box, Button, Input, InputBase, TextField } from "@mui/material";
+import { Box, Button, InputBase, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { getValidationRules, getErrorMessage } from "./utils";
 import { sendEmail } from "./utils";
 import { useDeviceType } from "../../utils/compatible.ts";
-import Seperator from "../seperator.tsx";
 
 function ContactForm({ data }: any) {
   const { buttons, inputFields } = data?.contact?.[0] || {};

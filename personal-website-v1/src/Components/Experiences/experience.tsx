@@ -8,7 +8,7 @@ import { useDeviceType } from "../../utils/compatible.ts";
 function Experience(item) {
   const [content, setContent] = React.useState<any[]>([]);
   const [open, setOpen] = React.useState(false);
-  const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const { isMobile } = useDeviceType();
 
   // Initialize with first experience content so it's not empty by default
   React.useEffect(() => {

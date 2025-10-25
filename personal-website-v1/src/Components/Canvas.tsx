@@ -28,7 +28,7 @@ function Canvas(props: any) {
       const url = getFileUrl(pdfButtons[0]?.pdfFile?.asset);
       setRenderResume({ fileUrl: url });
     }
-  }, [buttons, PageContext]);
+  }, [buttons, PageContext, setRenderResume]);
 
   const handleClick = () => setOpenResume(true);
 

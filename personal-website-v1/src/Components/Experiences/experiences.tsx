@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Seperator from "../seperator.tsx";
 import Experience from "./experience.tsx";
 import { useDeviceType } from "../../utils/compatible.ts";
