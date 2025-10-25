@@ -1,5 +1,5 @@
 import { Box, Typography, Dialog, IconButton } from "@mui/material";
-import React, { useMemo } from "react";
+import React from "react";
 import { urlFor } from "../../utils-sanity/imageBuilder.js";
 import ListOfExperiences from "./ListOfExperiences.tsx";
 import { PortableText } from "@portabletext/react";
@@ -9,6 +9,44 @@ function Experience(item) {
   const [content, setContent] = React.useState<any[]>([]);
   const [open, setOpen] = React.useState(false);
   const { isMobile, isTablet, isDesktop } = useDeviceType();
+
+  // Initialize with first experience content so it's not empty by default
+  React.useEffect(() => {
+    const first = item?.experience?.[0]?.richDescription;
+    if (first && (!content || content.length === 0)) {
+      setContent(first);
+    }
+  }, [item?.experience]);
+
+  // Shared styles and renderer to keep things DRY
+  const scrollbarStyles = {
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "violet",
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar": {
+      width: isMobile ? "1.2vw" : "0.3vw",
+    },
+  } as const;
+
+  const renderRichContent = (fontSize: string, marginBottom: string) => (
+    <PortableText
+      value={content}
+      components={{
+        block: ({ children }) => (
+          <Typography
+            sx={{
+              color: "white",
+              fontSize,
+              marginBottom,
+            }}
+          >
+            {children}
+          </Typography>
+        ),
+      }}
+    />
+  );
 
   return (
     <Box
@@ -100,31 +138,10 @@ function Experience(item) {
             maxHeight: "28vw",
             backdropFilter: "blur(0.08vw)",
             overflowY: "auto",
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "violet",
-              borderRadius: "10px",
-            },
-            "&::-webkit-scrollbar": {
-              width: "0.3vw",
-            },
+            ...scrollbarStyles,
           }}
         >
-          <PortableText
-            value={content}
-            components={{
-              block: ({ children }) => (
-                <Typography
-                  sx={{
-                    color: "white",
-                    fontSize: "1.2vw",
-                    marginBottom: "1vw",
-                  }}
-                >
-                  {children}
-                </Typography>
-              ),
-            }}
-          />
+          {renderRichContent("1.2vw", "1vw")}
         </Box>
       )}
 
@@ -160,31 +177,10 @@ function Experience(item) {
                 marginTop: "8vw",
                 color: "white",
                 overflowY: "auto",
-                "&::-webkit-scrollbar-thumb": {
-                  backgroundColor: "violet",
-                  borderRadius: "10px",
-                },
-                "&::-webkit-scrollbar": {
-                  width: "1.2vw",
-                },
+                ...scrollbarStyles,
               }}
             >
-              <PortableText
-                value={content}
-                components={{
-                  block: ({ children }) => (
-                    <Typography
-                      sx={{
-                        color: "white",
-                        fontSize: "4vw",
-                        marginBottom: "3vw",
-                      }}
-                    >
-                      {children}
-                    </Typography>
-                  ),
-                }}
-              />
+              {renderRichContent("4vw", "3vw")}
             </Box>
           </Box>
         </Dialog>

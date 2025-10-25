@@ -7,7 +7,15 @@ import ExperienceCard from "./ExperienceCard.tsx";
 function ListOfExperiences(props) {
   const { experiences, onSelectExperience } = props;
   const { isMobile, isTablet, isDesktop } = useDeviceType();
-  const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    if (experiences?.length) {
+      onSelectExperience(experiences[0]?.richDescription);
+      setSelectedIndex(0);
+    }
+  }, [experiences]);
+
   return (
     <Box
       sx={{
