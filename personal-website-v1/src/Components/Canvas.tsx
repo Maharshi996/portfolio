@@ -51,7 +51,7 @@ function Canvas(props: any) {
             alignItems: "left",
             height: "100%",
             gap: "5vw",
-            padding: "5vw 8vw",
+            padding: "4vw 8vw",
           }}
         >
           <Box
