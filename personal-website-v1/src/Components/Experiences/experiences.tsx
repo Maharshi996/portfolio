@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import Seperator from "../Seperator.tsx";
+import Seperator from "../seperator.tsx";
 import Experience from "./experience.tsx";
 
 function Experiences(props: any) {

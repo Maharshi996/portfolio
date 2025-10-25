@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { urlFor } from "../utils-sanity/imageBuilder";
-import Seperator from "./Seperator.tsx";
+import Seperator from "./seperator.tsx";
 import { useDeviceType } from "../utils/compatible.ts";
 
 const Certifications = (props: any) => {

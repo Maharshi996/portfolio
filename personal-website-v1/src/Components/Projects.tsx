@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Card from "./utils/Card.tsx";
-import Seperator from "./Seperator.tsx";
+import Seperator from "./seperator.tsx";
 import { useDeviceType } from "../utils/compatible.ts";
 
 function Projects(props: any) {

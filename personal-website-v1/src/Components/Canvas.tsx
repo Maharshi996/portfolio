@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Box, Typography, Button, Modal } from "@mui/material";
 import { urlFor } from "../utils-sanity/imageBuilder";
-import Seperator from "./Seperator.tsx";
+import Seperator from "./seperator.tsx";
 import { handleSroll } from "./helpers/goToComponent.ts";
 import { PageContext } from "../Context/pageContext.ts";
 import PdfViewer from "../Components/resume/pdfViewer.tsx";
