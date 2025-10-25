@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Box, Button, Input, InputBase, TextField } from "@mui/material";
+import { Box, Button, InputBase, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { getValidationRules, getErrorMessage } from "./utils";
 import { sendEmail } from "./utils";
 import { useDeviceType } from "../../utils/compatible.ts";
-import Seperator from "../Seperator.tsx";
 
 function ContactForm({ data }: any) {
   const { buttons, inputFields } = data?.contact?.[0] || {};
@@ -49,9 +48,9 @@ function ContactForm({ data }: any) {
           sx={{
             display: "grid",
             gridTemplateColumns: "1fr",
-            padding: "4vw 4vw 3vw 4vw",
+            padding: isMobile ? "6vw" : "4vw 4vw 3vw 4vw",
             width: isMobile ? "90vw" : isTablet ? "70vw" : "60vw",
-            margin: isMobile ? "10vw auto" : isTablet ? "3vw auto" : "4vw auto",
+            margin: isMobile ? "8vw auto" : isTablet ? "3vw auto" : "4vw auto",
             gap: isMobile ? "3vw" : "1vw",
             borderRadius: "0.3vw",
             boxShadow: "0px 0px 20px rgb(74, 69, 74)",

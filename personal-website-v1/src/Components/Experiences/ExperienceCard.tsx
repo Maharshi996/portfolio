@@ -32,10 +32,12 @@ export default function ExperienceCard({
         padding: isMobile ? "2vw" : "1vw",
         borderRadius: "0.5vw",
         boxShadow: selected
-          ? "0vw 0vw 0.35vw rgba(230, 149, 235, 0.8)"
+          ? isMobile
+            ? "0vw 0vw 1vw rgba(230, 149, 235, 0.8)"
+            : "0vw 0vw 0.35vw rgba(230, 149, 235, 0.8)"
           : "unset",
         backdropFilter: selected ? "blur(0.7vw)" : "unset",
-        marginLeft: isMobile ? "2vw" : "1vw",
+        marginLeft: isMobile ? "8vw" : "1vw",
         flex: 1,
       }}
     >

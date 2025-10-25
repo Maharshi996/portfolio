@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { urlFor } from "../utils-sanity/imageBuilder";
-import Seperator from "./Seperator.tsx";
+import Seperator from "./seperator.tsx";
 import { useDeviceType } from "../utils/compatible.ts";
 
 const Certifications = (props: any) => {
-  const { images } = props?.data;
+  const { images, id } = props?.data;
   const slides: { url: string; alt: string }[] = useMemo(() => {
     if (!images || !Array.isArray(images)) return [];
     return images
@@ -38,7 +38,7 @@ const Certifications = (props: any) => {
     ("ontouchstart" in window || (navigator as any)?.maxTouchPoints > 0);
   const isPaused = hover || pausedUntil > Date.now();
 
-  const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const { isMobile, isTablet } = useDeviceType();
   const slideHeight = isMobile ? 220 : isTablet ? 320 : 480;
   const dotSize = isMobile ? 6 : 8;
   const dotGap = isMobile ? 6 : 8;
@@ -89,8 +89,9 @@ const Certifications = (props: any) => {
     <Box>
       <Box
         sx={{
-          padding: isMobile || isTablet ? "10vw 7vw" : "5vw 15vw",
+          padding: isMobile || isTablet ? "8vw 7vw" : "4vw 15vw",
         }}
+        id={id}
       >
         <Box
           sx={{

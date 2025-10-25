@@ -1,12 +1,12 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Card from "./utils/Card.tsx";
-import Seperator from "./Seperator.tsx";
+import Seperator from "./seperator.tsx";
 import { useDeviceType } from "../utils/compatible.ts";
 
 function Projects(props: any) {
   const { card, id } = props?.data;
-  const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const { isMobile, isTablet } = useDeviceType();
   const visibleCount = isMobile ? 1 : isTablet ? 2 : 3.5;
   const gap = "1vw";
   const itemWidth = `calc((100% - (${
@@ -20,7 +20,7 @@ function Projects(props: any) {
           color: "white ",
           display: "block",
           gap: "1vw",
-          padding: "5vw 15vw",
+          padding: isMobile ? "8vw 15vw" : "4vw 15vw",
         }}
       >
         {/* Carousel with Arrow Buttons */}

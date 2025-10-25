@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Box, Typography, Button, Modal } from "@mui/material";
 import { urlFor } from "../utils-sanity/imageBuilder";
-import Seperator from "./Seperator.tsx";
+import Seperator from "./seperator.tsx";
 import { handleSroll } from "./helpers/goToComponent.ts";
 import { PageContext } from "../Context/pageContext.ts";
 import PdfViewer from "../Components/resume/pdfViewer.tsx";
@@ -28,7 +28,7 @@ function Canvas(props: any) {
       const url = getFileUrl(pdfButtons[0]?.pdfFile?.asset);
       setRenderResume({ fileUrl: url });
     }
-  }, [buttons, PageContext]);
+  }, [buttons, PageContext, setRenderResume]);
 
   const handleClick = () => setOpenResume(true);
 
@@ -51,7 +51,7 @@ function Canvas(props: any) {
             alignItems: "left",
             height: "100%",
             gap: "5vw",
-            padding: "5vw 8vw",
+            padding: isMobile ? "8vw" : "4vw 8vw",
           }}
         >
           <Box

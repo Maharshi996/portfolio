@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
-import Seperator from "./Seperator.tsx";
+import Seperator from "./seperator.tsx";
 import { urlFor } from "../utils-sanity/imageBuilder.js";
 import { useDeviceType } from "../utils/compatible.ts";
 
@@ -35,7 +35,7 @@ function Skils(props: any) {
             : isTablet
             ? "repeat(3,1fr)"
             : "repeat(4,1fr)",
-          padding: isMobile || isTablet ? "5vw 10vw" : "5vw 15vw",
+          padding: isMobile || isTablet ? "8vw" : "4vw 15vw",
           gap: isMobile || isTablet ? "8vw" : "4vw",
         }}
       >
@@ -93,7 +93,7 @@ function Skils(props: any) {
           src="/assets/arrow-down-angle-svgrepo-com.svg"
           sx={{
             width: isDesktop ? "1vw" : "3vw",
-            height: isDesktop ? "1vw" : "3vw",
+            height: isDesktop ? "fit-content" : "3vw",
             color: "white",
             transform: canShowMore ? "rotate(0deg)" : "rotate(180deg)",
           }}

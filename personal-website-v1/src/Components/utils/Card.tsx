@@ -2,10 +2,11 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { urlFor } from "../../utils-sanity/imageBuilder";
 import { useDeviceType } from "../../utils/compatible.ts";
+import { NavLink } from "./NavLink.tsx";
 
 function Card(props) {
   const { title, description, images, links } = props;
-  const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const { isMobile, isTablet } = useDeviceType();
 
   return (
     <Box
@@ -19,7 +20,7 @@ function Card(props) {
         boxSizing: "border-box",
         padding: "1vw",
         ":hover": {
-          boxShadow: "0px 0px 10px rgba(255, 255, 255, 0.2)",
+          boxShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
         },
       }}
     >
@@ -27,7 +28,7 @@ function Card(props) {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: "1vw",
+          gap: isMobile || isTablet ? "4vw" : "1vw",
           alignItems: "center",
           width: "100%",
         }}
@@ -41,8 +42,23 @@ function Card(props) {
             height: "auto",
           }}
         />
-        <Typography>{title}</Typography>
-        <Typography>{description}</Typography>
+        <Typography sx={{ fontSize: isMobile || isTablet ? "4vw" : "1vw" }}>
+          {title}
+        </Typography>
+        <Typography sx={{ fontSize: isMobile || isTablet ? "4vw" : "1vw" }}>
+          {description}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {links?.map((link: any, idx: number) => (
+          <NavLink key={idx} link={link} />
+        ))}
       </Box>
     </Box>
   );
