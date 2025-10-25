@@ -34,7 +34,7 @@ const theme = createTheme({
       styleOverrides: {
         body: {
           background:
-            "linear-gradient(transparent 95%, rgba(255,255,255,0.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.05) 95%)",
+            "linear-gradient(transparent calc(100% - 1px), rgba(255,255,255,0.06) 0), linear-gradient(90deg, transparent calc(100% - 1px), rgba(255,255,255,0.06) 0)",
           backgroundColor: "#0d0d0d",
           backgroundSize: "0.8vw 0.8vw",
           color: "white",
@@ -43,6 +43,9 @@ const theme = createTheme({
           fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
           "& *": {
             boxSizing: "border-box",
+          },
+          "@media (max-width:600px)": {
+            backgroundSize: "8px 8px",
           },
         },
       },

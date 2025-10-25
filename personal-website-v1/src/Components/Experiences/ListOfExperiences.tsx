@@ -10,7 +10,7 @@ function ListOfExperiences(props) {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
 
   React.useEffect(() => {
-    if (experiences?.length) {
+    if (experiences?.length && !isMobile) {
       onSelectExperience(experiences[0]?.richDescription);
       setSelectedIndex(0);
     }
