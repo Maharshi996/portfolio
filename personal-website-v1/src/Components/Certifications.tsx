@@ -5,7 +5,7 @@ import Seperator from "./seperator.tsx";
 import { useDeviceType } from "../utils/compatible.ts";
 
 const Certifications = (props: any) => {
-  const { images } = props?.data;
+  const { images, id } = props?.data;
   const slides: { url: string; alt: string }[] = useMemo(() => {
     if (!images || !Array.isArray(images)) return [];
     return images
@@ -91,6 +91,7 @@ const Certifications = (props: any) => {
         sx={{
           padding: isMobile || isTablet ? "8vw 7vw" : "4vw 15vw",
         }}
+        id={id}
       >
         <Box
           sx={{
