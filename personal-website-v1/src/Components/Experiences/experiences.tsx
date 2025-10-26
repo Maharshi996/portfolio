@@ -5,13 +5,13 @@ import { useDeviceType } from "../../utils/compatible.ts";
 
 function Experiences(props: any) {
   const { experience, id } = props?.data;
-  const { isMobile } = useDeviceType();
+  const { isMobile, isTablet } = useDeviceType();
 
   return (
     <Box>
       <Box
         sx={{
-          padding: isMobile ? "8vw" : "4vw 8vw",
+          padding: isMobile ? "10vw 8vw" : isTablet ? "6vw 8vw" : "4vw 8vw",
           display: "flex",
           flexDirection: "column",
           gap: "4vw",

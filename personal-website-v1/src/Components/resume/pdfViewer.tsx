@@ -1,8 +1,10 @@
 import React from "react";
 import { Box } from "@mui/material";
+import { useDeviceType } from "../../utils/compatible.ts";
 
 export default function PdfViewer(props: any) {
   const { fileUrl } = props;
+  const { isMobile } = useDeviceType();
   if (!fileUrl) return <p>Loading PDF...</p>;
   return (
     <Box
@@ -11,15 +13,15 @@ export default function PdfViewer(props: any) {
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
+        transition: "all 0.3s ease-in-out",
+        bgcolor: "background.paper",
+        backdropFilter: "blur(10px)",
         width: "70vw",
         height: "80vh",
-        bgcolor: "background.paper",
-        borderRadius: "8px",
-        border: "1px solid #ccc",
-        // bgcolor:
-        //   "linear-gradient(to right, rgba(215, 202, 202, 0), rgb(0, 0, 0))",
-        boxShadow: 24,
-        p: 4,
+        borderRadius: "2vw",
+        border: "1px solid violet",
+        p: isMobile ? 0 : 4,
+        zIndex: 1000,
       }}
     >
       <iframe

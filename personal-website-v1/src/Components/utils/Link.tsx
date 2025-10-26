@@ -1,16 +1,17 @@
 import { Box } from "@mui/material";
 import { useDeviceType } from "../../utils/compatible.ts";
 
-export const NavLink = ({ link }: any) => {
+export const Link = ({ link, sx }: any) => {
   const { isMobile, isTablet } = useDeviceType();
   return (
     <Box
       sx={{
+        ...sx,
         a: {
           color: "white",
-          fontSize: isMobile || isTablet ? "4vw" : "1vw",
+          fontSize: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw",
           textDecoration: "none",
-          margin: isMobile || isTablet ? "4vw" : " 0 1vw",
+          margin: isMobile ? "4vw" : isTablet ? "2vw" : " 0 1vw",
           position: "relative",
           display: "inline-block",
           transition: "color 0.3s ease",

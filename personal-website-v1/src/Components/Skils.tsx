@@ -35,8 +35,8 @@ function Skils(props: any) {
             : isTablet
             ? "repeat(3,1fr)"
             : "repeat(4,1fr)",
-          padding: isMobile || isTablet ? "8vw" : "4vw 15vw",
-          gap: isMobile || isTablet ? "8vw" : "4vw",
+          padding: isMobile ? "10vw 8vw" : isTablet ? " 6vw 8vw" : "4vw 15vw",
+          gap: isMobile ? "8vw" : isTablet ? "5vw" : "4vw",
         }}
       >
         {(links ?? [])
@@ -59,11 +59,18 @@ function Skils(props: any) {
                   src={urlFor(skill?.images?.[0]?.asset?._ref).url()}
                   alt={skill?.label}
                   sx={{
-                    height: isMobile || isTablet ? "10vw" : "4vw",
-                    width: isMobile || isTablet ? "10vw" : "4vw",
+                    height: isMobile ? "10vw" : isTablet ? "6vw" : "4vw",
+                    width: isMobile ? "10vw" : isTablet ? "6vw" : "4vw",
                   }}
                 />
-                <Typography key={index}>{skill?.label}</Typography>
+                <Typography
+                  key={index}
+                  sx={{
+                    fontSize: isMobile ? "4vw" : isTablet ? "1.8vw" : "1vw",
+                  }}
+                >
+                  {skill?.label}
+                </Typography>
               </Box>
             );
           })}
@@ -82,8 +89,12 @@ function Skils(props: any) {
         <Typography
           sx={{
             textShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
-            fontSize: isDesktop ? "1vw" : "3vw",
-            margin: isDesktop ? "2vw auto" : "5vw auto",
+            fontSize: isDesktop ? "1vw" : isTablet ? "1.5vw" : "3vw",
+            margin: isDesktop
+              ? "0vw auto 4vw auto"
+              : isTablet
+              ? "0vw auto 4vw auto"
+              : "0vw auto 10vw auto",
           }}
         >
           {canShowMore ? " SHOW MORE" : "SHOW LESS"}
@@ -92,10 +103,11 @@ function Skils(props: any) {
           component="img"
           src="/assets/arrow-down-angle-svgrepo-com.svg"
           sx={{
-            width: isDesktop ? "1vw" : "3vw",
+            width: isDesktop ? "1vw" : isTablet ? "1.5vw" : "3vw",
             height: isDesktop ? "fit-content" : "3vw",
             color: "white",
             transform: canShowMore ? "rotate(0deg)" : "rotate(180deg)",
+            marginBottom: isDesktop ? "4vw" : isTablet ? "4vw" : "10vw",
           }}
         />
       </Box>

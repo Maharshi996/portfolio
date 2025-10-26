@@ -41,7 +41,7 @@ function Canvas(props: any) {
           alignItems: isMobile || isTablet ? "center" : "unset",
           gridTemplateColumns: "60% 40%",
           height: "fit-content",
-          gap: isMobile || isTablet ? "10vw" : "3vw",
+          gap: isMobile ? "10vw" : isTablet ? "3vw" : "3vw",
         }}
       >
         <Box
@@ -50,8 +50,12 @@ function Canvas(props: any) {
             justifyContent: "left",
             alignItems: "left",
             height: "100%",
-            gap: "5vw",
-            padding: isMobile ? "8vw" : "4vw 8vw",
+            gap: isMobile ? "5vw" : isTablet ? "2vw" : "5vw",
+            padding: isMobile
+              ? "8vw 8vw 10vw "
+              : isTablet
+              ? "0 8vw 6vw"
+              : " 4vw 8vw",
           }}
         >
           <Box
@@ -59,7 +63,7 @@ function Canvas(props: any) {
               display: "flex",
               flexDirection: "column",
               alignItems: "left",
-              gap: "3vw",
+              gap: isMobile ? "3vw" : isTablet ? "2vw" : "3vw",
             }}
           >
             <Box
@@ -76,7 +80,7 @@ function Canvas(props: any) {
                   color: "#FFFFFF",
                   fontWeight: "bold",
                   fontFamily: " IBM Plex Mono, monospace",
-                  fontSize: isMobile || isTablet ? "7vw" : "4vw",
+                  fontSize: isMobile ? "7vw" : isTablet ? "5vw" : "4vw",
                 }}
               >
                 {shortDescription}
@@ -114,7 +118,7 @@ function Canvas(props: any) {
                   fontWeight: "bold",
                   textAlign: "center",
                   letterSpacing: "0.3vw",
-                  fontSize: isMobile || isTablet ? "8vw" : "3vw",
+                  fontSize: isMobile ? "8vw" : isTablet ? "5vw" : "3vw",
                 }}
               >
                 {name}
@@ -124,7 +128,7 @@ function Canvas(props: any) {
               sx={{
                 color: "#FFFFFF",
                 textAlign: isMobile || isTablet ? "center" : "left",
-                fontSize: isMobile || isTablet ? "4vw" : "1.3vw",
+                fontSize: isMobile ? "4vw" : isTablet ? "2vw" : "1.3vw",
                 fontFamily: "IBM Plex Mono, monospace",
               }}
             >
@@ -135,7 +139,7 @@ function Canvas(props: any) {
                 display: "flex",
                 justifyContent: isMobile || isTablet ? "center" : "left",
                 gap: isMobile || isTablet ? "5vw" : "2vw",
-                marginTop: isMobile || isTablet ? "5vw" : "unset",
+                marginTop: isMobile ? "5vw" : isTablet ? "2vw" : "unset",
               }}
             >
               {buttons?.map((button: any, idx: number) => {
@@ -153,7 +157,7 @@ function Canvas(props: any) {
                     }
                     sx={{
                       borderRadius: "0px",
-                      fontSize: isMobile || isTablet ? "3vw" : "unset",
+                      fontSize: isMobile ? "3vw" : isTablet ? "1.8vw" : "unset",
                     }}
                   >
                     {button.label}
@@ -169,6 +173,9 @@ function Canvas(props: any) {
             onClose={() => setOpenResume(false)}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
+            sx={{
+              padding: "0vw",
+            }}
           >
             <PdfViewer {...renderResume} />
           </Modal>
@@ -181,7 +188,7 @@ function Canvas(props: any) {
             display: "flex",
             alignItems: isMobile || isTablet ? "center" : "unset",
             justifyContent: isMobile || isTablet ? "center" : "unset",
-            marginTop: isMobile || isTablet ? "15vw" : "unset",
+            marginTop: isMobile ? "15vw" : isTablet ? "5vw" : "unset",
           }}
         >
           <Box
@@ -189,8 +196,8 @@ function Canvas(props: any) {
             src={urlFor(images?.[0]?.asset?._ref).url()}
             alt="Maharshi-photo"
             sx={{
-              height: isMobile || isTablet ? "50vw" : "30vw",
-              width: isMobile || isTablet ? "50vw" : "30vw",
+              height: isMobile ? "50vw" : isTablet ? "40vw" : "30vw",
+              width: isMobile ? "50vw" : isTablet ? "40vw" : "30vw",
               objectFit: isMobile || isTablet ? "cover" : "contain",
               position: isMobile || isTablet ? "unset" : "absolute",
               border: "1px solid purple",

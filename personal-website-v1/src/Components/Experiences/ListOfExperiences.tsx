@@ -5,7 +5,7 @@ import Connector from "./Connector.tsx";
 import ExperienceCard from "./ExperienceCard.tsx";
 
 function ListOfExperiences(props) {
-  const { experiences, onSelectExperience } = props;
+  const { experiences, onSelectExperience, setClicked } = props;
   const { isMobile } = useDeviceType();
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
 
@@ -14,7 +14,7 @@ function ListOfExperiences(props) {
       onSelectExperience(experiences[0]?.richDescription);
       setSelectedIndex(0);
     }
-  }, [experiences, onSelectExperience]);
+  }, [experiences, isMobile]);
 
   return (
     <Box
@@ -47,6 +47,7 @@ function ListOfExperiences(props) {
               selected={selectedIndex === index}
               onSelect={() => {
                 onSelectExperience(item?.richDescription);
+                setClicked(true);
                 setSelectedIndex(index);
               }}
             />

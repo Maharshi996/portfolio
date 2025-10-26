@@ -39,7 +39,7 @@ const Certifications = (props: any) => {
   const isPaused = hover || pausedUntil > Date.now();
 
   const { isMobile, isTablet } = useDeviceType();
-  const slideHeight = isMobile ? 220 : isTablet ? 320 : 480;
+  const slideHeight = isMobile ? 180 : isTablet ? 320 : 480;
   const dotSize = isMobile ? 6 : 8;
   const dotGap = isMobile ? 6 : 8;
   const swipeThreshold = isMobile ? 40 : 60;
@@ -89,7 +89,7 @@ const Certifications = (props: any) => {
     <Box>
       <Box
         sx={{
-          padding: isMobile || isTablet ? "8vw 7vw" : "4vw 15vw",
+          padding: isMobile ? "10vw 8vw" : isTablet ? "6vw 8vw" : "4vw 15vw",
         }}
         id={id}
       >
@@ -159,7 +159,7 @@ const Certifications = (props: any) => {
                   sx={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "contain",
+                    objectFit: isMobile ? "unset" : "cover",
                     display: "block",
                   }}
                 />
