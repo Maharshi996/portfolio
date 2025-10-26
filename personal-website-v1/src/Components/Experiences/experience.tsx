@@ -8,6 +8,7 @@ import { useDeviceType } from "../../utils/compatible.ts";
 function Experience(item) {
   const [content, setContent] = React.useState<any[]>([]);
   const [open, setOpen] = React.useState(false);
+  const [clicked, setClicked] = React.useState(false);
   const { isMobile } = useDeviceType();
 
   // Initialize with first experience content so it's not empty by default
@@ -121,9 +122,10 @@ function Experience(item) {
         </Box>
         <ListOfExperiences
           experiences={item?.experience}
+          setClicked={setClicked}
           onSelectExperience={(rich) => {
             setContent(rich);
-            if (isMobile) setOpen(true);
+            if (isMobile && clicked) setOpen(true);
           }}
         />
       </Box>

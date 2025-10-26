@@ -20,7 +20,7 @@ function Navbar(props: any) {
   const handleDrawerOpen = () => setDrawerOpen(true);
   const handleDrawerClose = () => setDrawerOpen(false);
 
-  const renderNavLink = (
+  const renderLink = (
     link: any,
     index: any,
     additionalOnClick?: () => void
@@ -90,13 +90,13 @@ function Navbar(props: any) {
               }}
             >
               {data?.links?.map((link: any, index: any) =>
-                renderNavLink(link, index, handleDrawerClose)
+                renderLink(link, index, handleDrawerClose)
               )}
             </Box>
           </Drawer>
         </>
       ) : (
-        data?.links?.map((link: any, index: any) => renderNavLink(link, index))
+        data?.links?.map((link: any, index: any) => renderLink(link, index))
       )}
     </Box>
   );

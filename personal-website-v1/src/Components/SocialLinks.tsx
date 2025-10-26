@@ -4,7 +4,7 @@ import { urlFor } from "../utils-sanity/imageBuilder.js";
 import { useDeviceType } from "../utils/compatible.ts";
 function SocialLinks(props: any) {
   const data = props?.data;
-  const { isMobile } = useDeviceType();
+  const { isMobile, isTablet } = useDeviceType();
   // Normalize: support either data.links (array) or data itself as a single link object
   const links = Array.isArray(data?.links)
     ? data.links
@@ -21,14 +21,20 @@ function SocialLinks(props: any) {
   return (
     <Box
       sx={{
-        padding: isMobile ? " 8vw" : "4vw",
+        padding: isMobile ? "8vw" : isTablet ? "6vw 8vw" : "4vw",
         display: "flex",
         justifyContent: "center",
         backgroundImage:
           "linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9))",
       }}
     >
-      <Box sx={{ display: "flex", gap: 12, alignItems: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: isMobile ? "8vw" : isTablet ? "6vw" : "2vw",
+          alignItems: "center",
+        }}
+      >
         {links?.map((link: any) => {
           const ref = link?.images?.[0]?.asset?._ref;
           const src = ref ? urlFor(ref).url() : undefined;
@@ -55,11 +61,11 @@ function SocialLinks(props: any) {
                 src={src}
                 alt={alt}
                 sx={{
-                  width: isMobile ? "10vw" : "3vw",
-                  height: isMobile ? "10vw" : "3vw",
+                  width: isMobile ? "10vw" : isTablet ? "5vw" : "3vw",
+                  height: isMobile ? "10vw" : isTablet ? "5vw" : "3vw",
                   backgroundColor: "white",
                   borderRadius: "50%",
-                  padding: isMobile ? "0.5vw" : "0.3vw",
+                  padding: isMobile ? "0.5vw" : isTablet ? "0.5vw" : "0.3vw",
                 }}
               />
             </Box>

@@ -89,7 +89,7 @@ const Certifications = (props: any) => {
     <Box>
       <Box
         sx={{
-          padding: isMobile || isTablet ? "8vw 7vw" : "4vw 15vw",
+          padding: isMobile ? "10vw 8vw" : isTablet ? "6vw 8vw" : "4vw 15vw",
         }}
         id={id}
       >

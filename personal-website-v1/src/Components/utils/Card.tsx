@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { urlFor } from "../../utils-sanity/imageBuilder";
 import { useDeviceType } from "../../utils/compatible.ts";
-import { NavLink } from "./NavLink.tsx";
+import { Link } from "./Link.tsx";
 
 function Card(props) {
   const { title, description, images, links } = props;
@@ -28,7 +28,7 @@ function Card(props) {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: isMobile || isTablet ? "4vw" : "1vw",
+          gap: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw",
           alignItems: "center",
           width: "100%",
         }}
@@ -42,10 +42,14 @@ function Card(props) {
             height: "auto",
           }}
         />
-        <Typography sx={{ fontSize: isMobile || isTablet ? "4vw" : "1vw" }}>
+        <Typography
+          sx={{ fontSize: isMobile ? "4vw" : isTablet ? "2vw" : "1vw" }}
+        >
           {title}
         </Typography>
-        <Typography sx={{ fontSize: isMobile || isTablet ? "4vw" : "1vw" }}>
+        <Typography
+          sx={{ fontSize: isMobile ? "4vw" : isTablet ? "2vw" : "1vw" }}
+        >
           {description}
         </Typography>
       </Box>
@@ -57,7 +61,7 @@ function Card(props) {
         }}
       >
         {links?.map((link: any, idx: number) => (
-          <NavLink key={idx} link={link} />
+          <Link key={idx} link={link} />
         ))}
       </Box>
     </Box>
