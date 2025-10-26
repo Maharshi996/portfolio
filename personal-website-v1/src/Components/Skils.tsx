@@ -66,7 +66,7 @@ function Skils(props: any) {
                 <Typography
                   key={index}
                   sx={{
-                    fontSize: isMobile ? "4vw" : isTablet ? "2vw" : "1vw",
+                    fontSize: isMobile ? "4vw" : isTablet ? "1.8vw" : "1vw",
                   }}
                 >
                   {skill?.label}
@@ -89,8 +89,12 @@ function Skils(props: any) {
         <Typography
           sx={{
             textShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
-            fontSize: isDesktop ? "1vw" : isTablet ? "2vw" : "3vw",
-            margin: isDesktop ? "2vw auto" : "5vw auto",
+            fontSize: isDesktop ? "1vw" : isTablet ? "1.5vw" : "3vw",
+            margin: isDesktop
+              ? "0vw auto 4vw auto"
+              : isTablet
+              ? "0vw auto 4vw auto"
+              : "0vw auto 10vw auto",
           }}
         >
           {canShowMore ? " SHOW MORE" : "SHOW LESS"}
@@ -99,10 +103,11 @@ function Skils(props: any) {
           component="img"
           src="/assets/arrow-down-angle-svgrepo-com.svg"
           sx={{
-            width: isDesktop ? "1vw" : isTablet ? "2vw" : "3vw",
+            width: isDesktop ? "1vw" : isTablet ? "1.5vw" : "3vw",
             height: isDesktop ? "fit-content" : "3vw",
             color: "white",
             transform: canShowMore ? "rotate(0deg)" : "rotate(180deg)",
+            marginBottom: isDesktop ? "4vw" : isTablet ? "4vw" : "10vw",
           }}
         />
       </Box>

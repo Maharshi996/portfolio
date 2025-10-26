@@ -43,12 +43,12 @@ function Card(props) {
           }}
         />
         <Typography
-          sx={{ fontSize: isMobile ? "4vw" : isTablet ? "2vw" : "1vw" }}
+          sx={{ fontSize: isMobile ? "4vw" : isTablet ? "1.8vw" : "1vw" }}
         >
           {title}
         </Typography>
         <Typography
-          sx={{ fontSize: isMobile ? "4vw" : isTablet ? "2vw" : "1vw" }}
+          sx={{ fontSize: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw" }}
         >
           {description}
         </Typography>

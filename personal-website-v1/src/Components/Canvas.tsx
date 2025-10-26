@@ -157,7 +157,7 @@ function Canvas(props: any) {
                     }
                     sx={{
                       borderRadius: "0px",
-                      fontSize: isMobile ? "3vw" : isTablet ? "2vw" : "unset",
+                      fontSize: isMobile ? "3vw" : isTablet ? "1.8vw" : "unset",
                     }}
                   >
                     {button.label}

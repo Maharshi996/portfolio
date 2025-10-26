@@ -39,7 +39,7 @@ const Certifications = (props: any) => {
   const isPaused = hover || pausedUntil > Date.now();
 
   const { isMobile, isTablet } = useDeviceType();
-  const slideHeight = isMobile ? 220 : isTablet ? 320 : 480;
+  const slideHeight = isMobile ? 180 : isTablet ? 320 : 480;
   const dotSize = isMobile ? 6 : 8;
   const dotGap = isMobile ? 6 : 8;
   const swipeThreshold = isMobile ? 40 : 60;
@@ -159,7 +159,7 @@ const Certifications = (props: any) => {
                   sx={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "contain",
+                    objectFit: isMobile ? "unset" : "cover",
                     display: "block",
                   }}
                 />

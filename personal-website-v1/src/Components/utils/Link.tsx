@@ -9,7 +9,7 @@ export const Link = ({ link, sx }: any) => {
         ...sx,
         a: {
           color: "white",
-          fontSize: isMobile ? "4vw" : isTablet ? "2vw" : "1vw",
+          fontSize: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw",
           textDecoration: "none",
           margin: isMobile ? "4vw" : isTablet ? "2vw" : " 0 1vw",
           position: "relative",
