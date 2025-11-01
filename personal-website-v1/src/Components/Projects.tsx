@@ -20,7 +20,7 @@ function Projects(props: any) {
           color: "white ",
           display: "block",
           gap: "1vw",
-          padding: isMobile ? "10vw 15vw" : isTablet ? " 6vw 8vw" : "4vw 15vw",
+          padding: isMobile ? "10vw 11vw" : isTablet ? " 6vw 8vw" : "4vw 15vw",
         }}
       >
         {/* Carousel with Arrow Buttons */}
@@ -29,7 +29,7 @@ function Projects(props: any) {
             position: "relative",
             display: "flex",
             alignItems: "center",
-            width: isMobile || isTablet ? "99%" : "69vw",
+            width: isMobile || isTablet ? "100%" : "69vw",
           }}
         >
           {/* Left Arrow */}
