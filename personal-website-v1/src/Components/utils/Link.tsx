@@ -17,7 +17,7 @@ export const Link = ({ link, sx }: any) => {
           transition: "color 0.3s ease",
         },
         "a:hover": {
-          color: "purple",
+          color: "light purple",
         },
         "a::after": {
           content: '""',

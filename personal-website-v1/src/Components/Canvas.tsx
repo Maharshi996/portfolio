@@ -196,8 +196,8 @@ function Canvas(props: any) {
             src={urlFor(images?.[0]?.asset?._ref).url()}
             alt="Maharshi-photo"
             sx={{
-              height: isMobile ? "50vw" : isTablet ? "40vw" : "30vw",
-              width: isMobile ? "50vw" : isTablet ? "40vw" : "30vw",
+              height: isMobile ? "50vw" : isTablet ? "40vw" : "27vw",
+              width: isMobile ? "50vw" : isTablet ? "40vw" : "27vw",
               objectFit: isMobile || isTablet ? "cover" : "contain",
               position: isMobile || isTablet ? "unset" : "absolute",
               border: "1px solid purple",
