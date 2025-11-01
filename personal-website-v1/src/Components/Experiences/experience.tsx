@@ -5,7 +5,7 @@ import ListOfExperiences from "./ListOfExperiences.tsx";
 import { PortableText } from "@portabletext/react";
 import { useDeviceType } from "../../utils/compatible.ts";
 
-function Experience(item) {
+function Experience(item: any) {
   const [content, setContent] = React.useState<any[]>([]);
   const [open, setOpen] = React.useState(false);
   const [clicked, setClicked] = React.useState(false);
@@ -30,7 +30,7 @@ function Experience(item) {
     },
   } as const;
 
-  const renderRichContent = (fontSize: string, marginBottom: string) => (
+  const renderRichContent = () => (
     <PortableText
       value={content}
       components={{
@@ -38,8 +38,6 @@ function Experience(item) {
           <Typography
             sx={{
               color: "white",
-              fontSize,
-              marginBottom,
             }}
           >
             {children}
@@ -123,7 +121,7 @@ function Experience(item) {
         <ListOfExperiences
           experiences={item?.experience}
           setClicked={setClicked}
-          onSelectExperience={(rich) => {
+          onSelectExperience={(rich: any) => {
             setContent(rich);
             if (isMobile && clicked) setOpen(true);
           }}
@@ -135,7 +133,8 @@ function Experience(item) {
             display: "flex",
             flexDirection: "column",
             textAlign: "start",
-            padding: "2vw",
+            marginX: "3vw",
+            padding: "1vw 2vw",
             color: "white",
             maxHeight: "28vw",
             backdropFilter: "blur(0.08vw)",
@@ -143,7 +142,7 @@ function Experience(item) {
             ...scrollbarStyles,
           }}
         >
-          {renderRichContent("1.2vw", "1vw")}
+          {renderRichContent()}
         </Box>
       )}
 
@@ -182,7 +181,7 @@ function Experience(item) {
                 ...scrollbarStyles,
               }}
             >
-              {renderRichContent("4vw", "3vw")}
+              {renderRichContent()}
             </Box>
           </Box>
         </Dialog>

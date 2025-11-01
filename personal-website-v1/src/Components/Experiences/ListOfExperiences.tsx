@@ -4,7 +4,7 @@ import { useDeviceType } from "../../utils/compatible.ts";
 import Connector from "./Connector.tsx";
 import ExperienceCard from "./ExperienceCard.tsx";
 
-function ListOfExperiences(props) {
+function ListOfExperiences(props: any) {
   const { experiences, onSelectExperience, setClicked } = props;
   const { isMobile } = useDeviceType();
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);

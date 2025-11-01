@@ -19,6 +19,8 @@ function Navbar(props: any) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isLogoPresent = images?.length < 0;
+
   const handleDrawerOpen = () => setDrawerOpen(true);
   const handleDrawerClose = () => setDrawerOpen(false);
 
@@ -52,9 +54,18 @@ function Navbar(props: any) {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        position: "sticky",
+        top: "0px",
+        borderBottom: transparent ? "1px solid purple" : "0px",
+        backdropFilter: "blur(10px)",
+        background: transparent
+          ? "rgba(255, 255, 255, 0.1) "
+          : "linear-gradient(transparent 95%, rgba(255,255,255,0.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.05) 95%)",
+        backgroundSize: "0.8vw 0.8vw",
+        zIndex: 1000,
       }}
     >
-      {images?.length > 0 && (
+      {isLogoPresent && (
         <Box
           component="img"
           src={urlFor(images?.[0]?.asset?._ref).url()}
@@ -68,25 +79,33 @@ function Navbar(props: any) {
           }}
         />
       )}
+      {!isLogoPresent && (
+        <Typography
+          component="span"
+          sx={{
+            color: "white",
+            fontSize: isMobile ? "5vw" : isTablet ? "4vw" : "2vw",
+            px: isMobile ? "10vw" : isTablet ? "4vw" : "8vw",
+            fontWeight: "bold",
+            fontFamily: "IBM Plex Mono, monospace",
+            cursor: "pointer",
+            transition: "all 0.3s ease-in-out",
+            textShadow: "0px 0px 10px rgba(230, 149, 235, 1)",
+          }}
+        >
+          {"<M./>"}
+        </Typography>
+      )}
 
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "end",
-          position: "sticky",
-          top: "0px",
           gap: "5vw",
           padding: "0 2vw",
-          backdropFilter: "blur(10px)",
-          borderBottom: transparent ? "1px solid purple" : "0px",
-          background: transparent
-            ? "rgba(255, 255, 255, 0.1) "
-            : "linear-gradient(transparent 95%, rgba(255,255,255,0.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.05) 95%)",
-          backgroundSize: "0.8vw 0.8vw",
           color: "white",
           height: isMobile ? "18vw" : isTablet ? "10vw" : "5vw",
-          zIndex: 1000,
         }}
       >
         {isMobile || isTablet ? (

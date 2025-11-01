@@ -4,7 +4,7 @@ import { urlFor } from "../../utils-sanity/imageBuilder";
 import { useDeviceType } from "../../utils/compatible.ts";
 import { Link } from "./Link.tsx";
 
-function Card(props) {
+function Card(props: any) {
   const { title, description, images, links } = props;
   const { isMobile, isTablet } = useDeviceType();
 
@@ -16,9 +16,13 @@ function Card(props) {
         border: "1px solid purple",
         backdropFilter: "blur(10px)",
         width: isMobile || isTablet ? "100%" : "20vw",
-        height: "auto",
+        height: "30vw",
         boxSizing: "border-box",
         padding: "1vw",
+        display: "flex",
+        flexDirection: "column",
+        gap: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw",
+        justifyContent: "space-between",
         ":hover": {
           boxShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
         },
@@ -29,8 +33,8 @@ function Card(props) {
           display: "flex",
           flexDirection: "column",
           gap: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw",
-          alignItems: "center",
           width: "100%",
+          textAlign: "start",
         }}
       >
         <Box
@@ -39,11 +43,14 @@ function Card(props) {
           alt={`${title}-photo`}
           sx={{
             width: "100%",
-            height: "auto",
+            height: "10vw",
           }}
         />
         <Typography
-          sx={{ fontSize: isMobile ? "4vw" : isTablet ? "1.8vw" : "1vw" }}
+          sx={{
+            fontSize: isMobile ? "4vw" : isTablet ? "1.8vw" : "1vw",
+            fontWeight: "bold",
+          }}
         >
           {title}
         </Typography>
@@ -61,7 +68,11 @@ function Card(props) {
         }}
       >
         {links?.map((link: any, idx: number) => (
-          <Link key={idx} link={link} />
+          <Link
+            key={idx}
+            link={link}
+            sx={{ textShadow: "0px 0px 10px rgba(230, 149, 235, 1)" }}
+          />
         ))}
       </Box>
     </Box>

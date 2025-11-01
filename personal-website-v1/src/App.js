@@ -5,13 +5,14 @@ import { fetchSanityData } from "./utils-sanity/fetchComponentsData.js"; // Adju
 import { renderComponent } from "./Components/index.jsx";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
+import { useDeviceType } from "./utils/compatible.ts";
 import theme from "./theme.js"; // Adjust the import path as necessary
 
 function App(props) {
   const [pageData, setPageData] = useState(null);
   const [renderResume, setRenderResume] = useState({});
   const [renderModel, setRenderModel] = useState({});
-
+  const { isMobile, isTablet } = useDeviceType();
   const { components } = pageData || {};
 
   const fetchData = async () => {
@@ -30,7 +31,7 @@ function App(props) {
 
   const handleMouseMove = (e) => {
     const cursor = document.querySelector(".custom-cursor");
-    if (cursor) {
+    if (cursor && !isMobile && !isTablet) {
       cursor.style.left = `${e.clientX}px`;
       cursor.style.top = `${e.clientY}px`;
     }

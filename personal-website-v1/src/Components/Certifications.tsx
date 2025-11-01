@@ -159,7 +159,6 @@ const Certifications = (props: any) => {
                   sx={{
                     width: "100%",
                     height: "100%",
-                    objectFit: isMobile ? "unset" : "cover",
                     display: "block",
                   }}
                 />
