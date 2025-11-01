@@ -13,12 +13,10 @@ function Card(props: any) {
       key={props?.data?._key}
       sx={{
         color: "white",
-        border: "1px solid purple",
         backdropFilter: "blur(10px)",
-        width: isMobile || isTablet ? "100%" : "20vw",
-        height: "30vw",
+        width: isMobile ? "100%" : isTablet ? "100%" : "22vw",
+        height: isMobile ? "fit-content" : "30vw",
         boxSizing: "border-box",
-        padding: "1vw",
         display: "flex",
         flexDirection: "column",
         gap: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw",
@@ -43,19 +41,23 @@ function Card(props: any) {
           alt={`${title}-photo`}
           sx={{
             width: "100%",
-            height: "10vw",
+            height: isMobile ? "fit-content" : "10vw",
           }}
         />
         <Typography
           sx={{
             fontSize: isMobile ? "4vw" : isTablet ? "1.8vw" : "1vw",
             fontWeight: "bold",
+            paddingX: isMobile ? "4vw" : "0.8vw",
           }}
         >
           {title}
         </Typography>
         <Typography
-          sx={{ fontSize: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw" }}
+          sx={{
+            fontSize: isMobile ? "3.8vw" : isTablet ? "1.2vw" : "1vw",
+            paddingX: isMobile ? "4vw" : "0.8vw",
+          }}
         >
           {description}
         </Typography>
@@ -65,13 +67,16 @@ function Card(props: any) {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          padding: isMobile ? "0vw 4vw" : "0.8vw",
         }}
       >
         {links?.map((link: any, idx: number) => (
           <Link
             key={idx}
             link={link}
-            sx={{ textShadow: "0px 0px 10px rgba(230, 149, 235, 1)" }}
+            sx={{
+              textShadow: "0px 0px 10px rgba(230, 149, 235, 1)",
+            }}
           />
         ))}
       </Box>
