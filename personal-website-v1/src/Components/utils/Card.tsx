@@ -1,12 +1,22 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, GlobalStyles } from "@mui/material";
 import { urlFor } from "../../utils-sanity/imageBuilder";
 import { useDeviceType } from "../../utils/compatible.ts";
 import { Link } from "./Link.tsx";
+import { keyframes } from "@mui/material/styles";
 
 function Card(props: any) {
   const { title, description, images, links } = props;
   const { isMobile, isTablet } = useDeviceType();
+
+  const spin = keyframes`
+    0% {
+      --angle: 0deg;
+    }
+    100% {
+      --angle: 360deg;
+    }
+  `;
 
   return (
     <Box
