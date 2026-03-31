@@ -74,8 +74,9 @@ function Projects(props: any) {
               display: "flex",
               overflowX: "auto",
               scrollSnapType: "x mandatory",
-              gap: isMobile || isTablet ? "4vw" : "1vw",
-              paddingBottom: "1vw",
+              gap: isMobile || isTablet ? "4vw" : "2vw",
+              paddingTop: "2vw",
+              paddingBottom: "3vw",
               width: "100%",
               scrollBehavior: "smooth",
               scrollbarWidth: "none", // Firefox
