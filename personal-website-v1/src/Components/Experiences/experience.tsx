@@ -17,7 +17,7 @@ function Experience(item: any) {
     if (first && (!content || content.length === 0)) {
       setContent(first);
     }
-  }, [item?.experience]);
+  }, [item?.experience, content]);
 
   // Shared styles and renderer to keep things DRY
   const scrollbarStyles = {

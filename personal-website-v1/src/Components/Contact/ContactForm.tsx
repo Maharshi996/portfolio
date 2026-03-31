@@ -15,12 +15,9 @@ function ContactForm({ data }: any) {
     reset,
     formState: { errors },
   } = useForm({ mode: "onBlur" });
-  const [submittedData, setSubmittedData] = useState<any>(null);
-
   const [emailStatus, setEmailStatus] = useState<string | null>(null);
 
   const onSubmit = async (formData: any) => {
-    setSubmittedData(formData);
     try {
       await sendEmail(formData);
       setEmailStatus("Email sent successfully!");
