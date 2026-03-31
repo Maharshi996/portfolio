@@ -21,8 +21,11 @@ function Card(props: any) {
         flexDirection: "column",
         gap: isMobile ? "4vw" : isTablet ? "1.5vw" : "1vw",
         justifyContent: "space-between",
+        position: "relative",
+        transition: "transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out",
         ":hover": {
-          boxShadow: "0px 0px 10px rgba(230, 149, 235, 0.8)",
+          transform: "scale(1.03)",
+          boxShadow: "0px 10px 15px rgba(74, 69, 74, 0.4)",
         },
       }}
     >
@@ -41,7 +44,7 @@ function Card(props: any) {
           alt={`${title}-photo`}
           sx={{
             width: "100%",
-            height: isMobile ? "fit-content" : "10vw",
+            height: isMobile ? "fit-content" : "12vw",
           }}
         />
         <Typography

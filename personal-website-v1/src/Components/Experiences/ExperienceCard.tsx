@@ -33,8 +33,8 @@ export default function ExperienceCard({
         borderRadius: "0.5vw",
         boxShadow: selected
           ? isMobile
-            ? "0vw 0vw 1vw rgba(230, 149, 235, 0.8)"
-            : "0vw 0vw 0.35vw rgba(230, 149, 235, 0.8)"
+            ? "0vw 0vw 1vw rgb(74, 69, 74)"
+            : "0vw 0vw 2vw rgb(74, 69, 74)"
           : "unset",
         backdropFilter: selected ? "blur(0.7vw)" : "unset",
         marginLeft: isMobile ? "8vw" : "1vw",

@@ -157,7 +157,7 @@ function Canvas(props: any) {
                     }
                     sx={{
                       borderRadius: "0px",
-                      fontSize: isMobile ? "3vw" : isTablet ? "1.8vw" : "unset",
+                      fontSize: isMobile ? "4vw" : isTablet ? "1.8vw" : "unset",
                     }}
                   >
                     {button.label}
@@ -200,7 +200,6 @@ function Canvas(props: any) {
               width: isMobile ? "50vw" : isTablet ? "40vw" : "27vw",
               objectFit: isMobile || isTablet ? "cover" : "contain",
               position: isMobile || isTablet ? "unset" : "absolute",
-              border: "1px solid purple",
               backdropFilter: "blur(10px)",
               borderRadius: "50%",
               boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.5)",
